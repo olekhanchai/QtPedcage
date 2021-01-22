@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/">
+        <file>blue.png</file>
+        <file>carbondioxide.png</file>
+        <file>gray.png</file>
+        <file>green.png</file>
+        <file>temperature.png</file>
+        <file>bluebar.png</file>
+        <file>graybar.png</file>
+        <file>greenbar.png</file>
+        <file>orangebar.png</file>
+        <file>red.png</file>
+        <file>o2.png</file>
+        <file>temp.png</file>
+        <file>humid.png</file>
+        <file>co2.png</file>
+        <file>gear.png</file>
+        <file>bluelamp.png</file>
+        <file>camera.png</file>
+        <file>yellolamp.png</file>
+        <file>setgear.png</file>
+        <file>greenup.png</file>
+        <file>greyup.png</file>
+        <file>redup.png</file>
+        <file>bluedown.png</file>
+        <file>blueup.png</file>
+        <file>reddown.png</file>
+        <file>greydown.png</file>
+        <file>greendown.png</file>
+        <file>offcam.png</file>
+        <file>offlamp.png</file>
+        <file>bluedownpush.png</file>
+        <file>blueuppush.png</file>
+        <file>reddownpush.png</file>
+        <file>reduppush.png</file>
+        <file>greendownpush.png</file>
+        <file>greenuppush.png</file>
+        <file>greydownpush.png</file>
+        <file>greyuppush.png</file>
+        <file>status.png</file>
+        <file>humidity.jpg</file>
+        <file>oxigen.jpg</file>
+    </qresource>
+</RCC>
