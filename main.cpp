@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "graphwindow.h"
 #include <QApplication>
 #include <QDebug>
 #include <QThread>

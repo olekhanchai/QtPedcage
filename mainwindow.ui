@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>556</height>
+    <height>494</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,1136 +20,1565 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btnHumidity">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>55</y>
-      <width>360</width>
-      <height>180</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/humidity.jpg);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnCO2">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>240</y>
-      <width>360</width>
-      <height>180</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/carbondioxide.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnO2">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>240</y>
-      <width>360</width>
-      <height>180</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/oxigen.jpg);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblHumidity">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>55</y>
-      <width>181</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/blue.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnTemperature">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>55</y>
-      <width>360</width>
-      <height>180</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/temperature.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblTemp">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>55</y>
-      <width>191</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/red.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblO2">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>250</y>
-      <width>191</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/green.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblCO2">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>240</y>
-      <width>211</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/gray.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblHumidity_2">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>55</y>
-      <width>301</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/bluebar.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblHumidity_3">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>55</y>
-      <width>301</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/orangebar.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblHumidity_4">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>240</y>
-      <width>301</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/graybar.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblHumidity_5">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>240</y>
-      <width>301</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/greenbar.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblHumidity_6">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>310</y>
-      <width>51</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/o2.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblHumidity_7">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>474</x>
-      <y>100</y>
-      <width>51</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/humid.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblTemp_2">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>115</y>
-      <width>51</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/temp.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblCO2_2">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>305</y>
-      <width>51</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/co2.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblTempDisp">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>125</y>
-      <width>161</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>30</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>30 °C</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblHumidityDisp">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>125</y>
-      <width>171</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>30</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>30 %RH</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblCo2Disp">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>300</y>
-      <width>161</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>30</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>30 PPM</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblO2Disp">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>300</y>
-      <width>161</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>30</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>30 %</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblDateTime">
-    <property name="geometry">
-     <rect>
-      <x>539</x>
-      <y>431</y>
-      <width>261</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>24/02/2020 09:53</string>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblOpenCam">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>430</y>
-      <width>41</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/camera.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblStatus">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>440</y>
-      <width>241</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 170, 0);</string>
-    </property>
-    <property name="text">
-     <string>Normal Running State</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblGreyGear">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>240</y>
-      <width>211</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/setgear.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblRedGear">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>55</y>
-      <width>211</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/setgear.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblBlueGear">
-    <property name="geometry">
-     <rect>
-      <x>395</x>
-      <y>55</y>
-      <width>211</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/setgear.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblGreenGear">
-    <property name="geometry">
-     <rect>
-      <x>396</x>
-      <y>241</y>
-      <width>211</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/setgear.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblGreyDown">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>359</y>
-      <width>61</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/greydown.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblGreyUp">
-    <property name="geometry">
-     <rect>
-      <x>248</x>
-      <y>242</y>
-      <width>61</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/greyup.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblRedDown">
-    <property name="geometry">
-     <rect>
-      <x>248</x>
-      <y>175</y>
-      <width>61</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/reddown.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblRedUp">
-    <property name="geometry">
-     <rect>
-      <x>246</x>
-      <y>55</y>
-      <width>61</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/redup.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblBlueDown">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>175</y>
-      <width>61</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/bluedown.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblBlueUp">
-    <property name="geometry">
-     <rect>
-      <x>628</x>
-      <y>55</y>
-      <width>61</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/blueup.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblGreenDown">
-    <property name="geometry">
-     <rect>
-      <x>631</x>
-      <y>360</y>
-      <width>61</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/greendown.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblGreenUp">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>240</y>
-      <width>61</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/greenup.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblStart">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>436</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/green.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblYellowLight">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>351</x>
-      <y>436</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/yellolamp.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblBlueLight">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>435</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/bluelamp.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>801</width>
-      <height>51</height>
+      <width>791</width>
+      <height>501</height>
      </rect>
     </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
+    <property name="currentIndex">
+     <number>0</number>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(23, 147, 255);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
+    <widget class="QWidget" name="page">
+     <widget class="QLabel" name="lblTempDisp">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>135</y>
+        <width>161</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>26</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>30 °C</string>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="btnLowerBound">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/bluebar.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblRedUp">
+      <property name="geometry">
+       <rect>
+        <x>256</x>
+        <y>65</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/redup.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblLowerBound">
+      <property name="geometry">
+       <rect>
+        <x>29</x>
+        <y>19</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Lower Limit</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnHumidity">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>65</y>
+        <width>360</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/humidity.jpg);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblBlueDown">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>185</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/bluedown.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblO2Icon">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>310</y>
+        <width>51</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/o2.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblCo2Disp">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>310</y>
+        <width>161</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>26</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>30 PPM</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTempBackground">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>65</y>
+        <width>301</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/orangebar.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblStatus">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>450</y>
+        <width>241</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 170, 0);</string>
+      </property>
+      <property name="text">
+       <string>Normal Running State</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblRedDown">
+      <property name="geometry">
+       <rect>
+        <x>258</x>
+        <y>185</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/reddown.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTempIcon">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>125</y>
+        <width>51</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/temp.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblO2Background">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>250</y>
+        <width>301</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/greenbar.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblHumidCtl">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>760</x>
+        <y>20</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/humid.png);background-color: rgb(100, 100, 200)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblO2Disp">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>310</y>
+        <width>161</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>26</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>30 %</string>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblOpenCam">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>440</y>
+        <width>41</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/camera.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblTempCtl">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>20</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/temp.png);background-color: rgb(255, 150, 0)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>801</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(23, 147, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblUpperBound">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>19</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Upper Limit</string>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblBlueUp">
+      <property name="geometry">
+       <rect>
+        <x>638</x>
+        <y>65</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/blueup.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnTemperature">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>65</y>
+        <width>360</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/temperature.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblMiddleBound">
+      <property name="geometry">
+       <rect>
+        <x>133</x>
+        <y>19</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Setting Value</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnO2">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>250</y>
+        <width>360</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/oxigen.jpg);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblCO2Icon">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>315</y>
+        <width>51</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/co2.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCO2">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>250</y>
+        <width>360</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/carbondioxide.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblCO2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>250</y>
+        <width>211</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/gray.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblHumidityDisp">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>135</y>
+        <width>171</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>26</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>30 %RH</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblHumidIcon">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>484</x>
+        <y>110</y>
+        <width>51</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/humid.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblGreyUp">
+      <property name="geometry">
+       <rect>
+        <x>258</x>
+        <y>252</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/greyup.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTemp">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>65</y>
+        <width>191</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/red.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblBlueLight">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>445</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/bluelamp.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblBlueGear">
+      <property name="geometry">
+       <rect>
+        <x>405</x>
+        <y>65</y>
+        <width>211</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/setgear.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblHumidityBackground">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>65</y>
+        <width>301</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/bluebar.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblGreyGear">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>250</y>
+        <width>211</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/setgear.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblRedGear">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>65</y>
+        <width>211</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/setgear.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblCo2Background">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>250</y>
+        <width>301</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/graybar.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="btnUpperBound">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>10</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/bluebar.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblGreyDown">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>369</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/greydown.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblGreenUp">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>250</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/greenup.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblO2Ctl_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>723</x>
+        <y>20</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/co2.png);background-color: rgb(200, 200, 200)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblDateTime">
+      <property name="geometry">
+       <rect>
+        <x>549</x>
+        <y>441</y>
+        <width>261</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>24/02/2020 09:53</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>441</y>
+        <width>801</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(23, 147, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblO2Ctl">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>686</x>
+        <y>20</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/o2.png);background-color: rgb(32, 210, 0)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="btnMiddleBound">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>10</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/bluebar.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblYellowLight">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>361</x>
+        <y>446</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/yellolamp.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblGreenGear">
+      <property name="geometry">
+       <rect>
+        <x>406</x>
+        <y>251</y>
+        <width>211</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/setgear.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblHumidity">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>65</y>
+        <width>181</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/blue.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblStartDateTime">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>241</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 170, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblStart">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>446</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/green.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblO2">
+      <property name="geometry">
+       <rect>
+        <x>417</x>
+        <y>254</y>
+        <width>191</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/green.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblGreenDown">
+      <property name="geometry">
+       <rect>
+        <x>641</x>
+        <y>370</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/greendown.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>label</zorder>
+     <zorder>label_2</zorder>
+     <zorder>btnCO2</zorder>
+     <zorder>lblCo2Background</zorder>
+     <zorder>lblGreyGear</zorder>
+     <zorder>lblCO2</zorder>
+     <zorder>lblRedGear</zorder>
+     <zorder>btnTemperature</zorder>
+     <zorder>lblTempBackground</zorder>
+     <zorder>btnHumidity</zorder>
+     <zorder>lblHumidityBackground</zorder>
+     <zorder>lblGreenGear</zorder>
+     <zorder>btnO2</zorder>
+     <zorder>lblO2Background</zorder>
+     <zorder>lblTemp</zorder>
+     <zorder>lblBlueGear</zorder>
+     <zorder>lblHumidity</zorder>
+     <zorder>lblO2</zorder>
+     <zorder>lblTempDisp</zorder>
+     <zorder>btnLowerBound</zorder>
+     <zorder>lblRedUp</zorder>
+     <zorder>lblLowerBound</zorder>
+     <zorder>lblBlueDown</zorder>
+     <zorder>lblCo2Disp</zorder>
+     <zorder>lblStatus</zorder>
+     <zorder>lblRedDown</zorder>
+     <zorder>lblTempIcon</zorder>
+     <zorder>lblHumidCtl</zorder>
+     <zorder>lblO2Disp</zorder>
+     <zorder>lblOpenCam</zorder>
+     <zorder>lblTempCtl</zorder>
+     <zorder>lblUpperBound</zorder>
+     <zorder>lblBlueUp</zorder>
+     <zorder>lblMiddleBound</zorder>
+     <zorder>lblCO2Icon</zorder>
+     <zorder>lblHumidityDisp</zorder>
+     <zorder>lblHumidIcon</zorder>
+     <zorder>lblGreyUp</zorder>
+     <zorder>lblBlueLight</zorder>
+     <zorder>btnUpperBound</zorder>
+     <zorder>lblGreyDown</zorder>
+     <zorder>lblGreenUp</zorder>
+     <zorder>lblO2Ctl_2</zorder>
+     <zorder>lblDateTime</zorder>
+     <zorder>lblO2Ctl</zorder>
+     <zorder>btnMiddleBound</zorder>
+     <zorder>lblYellowLight</zorder>
+     <zorder>lblStartDateTime</zorder>
+     <zorder>lblStart</zorder>
+     <zorder>lblGreenDown</zorder>
+     <zorder>lblO2Icon</zorder>
+    </widget>
+    <widget class="QWidget" name="page2">
+     <widget class="QLabel" name="lblDateTime_2">
+      <property name="geometry">
+       <rect>
+        <x>549</x>
+        <y>441</y>
+        <width>261</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>24/02/2020 09:53</string>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="btnLowerBound_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>70</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/bluebar.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnTemperature_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>65</y>
+        <width>781</width>
+        <height>371</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#centralWidget {
+border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>801</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(23, 147, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblLowerBound_5">
+      <property name="geometry">
+       <rect>
+        <x>539</x>
+        <y>79</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Month View</string>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="btnLowerBound_3">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/bluebar.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTemp_3">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>80</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/red.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="btnLowerBound_4">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>70</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/bluebar.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="btnLowerBound_5">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>70</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/bluebar.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblRedGear_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>101</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/setgear.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblLowerBound_6">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>20</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>30 *C</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTemp_4">
+      <property name="geometry">
+       <rect>
+        <x>45</x>
+        <y>90</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/temp.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>441</y>
+        <width>801</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(23, 147, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QGraphicsView" name="gView">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>150</y>
+        <width>741</width>
+        <height>271</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblLowerBound_4">
+      <property name="geometry">
+       <rect>
+        <x>409</x>
+        <y>79</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Week View</string>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblLowerBound_2">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>80</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Temperature History</string>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblLowerBound_3">
+      <property name="geometry">
+       <rect>
+        <x>279</x>
+        <y>79</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>24 Hrs View</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblStartDateTime_2">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>120</y>
+        <width>701</width>
+        <height>8</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 170, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblTempCtl_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>20</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/temp.png);background-color: rgb(255, 150, 0)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="ClickableLabel" name="lblBack">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>19</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
    </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>431</y>
-      <width>801</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(23, 147, 255);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="btnLowerBound">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>121</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-      <horstretch>100</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/bluebar.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="btnUpperBound">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>0</y>
-      <width>121</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-      <horstretch>100</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/bluebar.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblUpperBound">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>9</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Upper Limit</string>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblLowerBound">
-    <property name="geometry">
-     <rect>
-      <x>19</x>
-      <y>9</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Lower Limit</string>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="btnMiddleBound">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>0</y>
-      <width>121</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-      <horstretch>100</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/bluebar.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblMiddleBound">
-    <property name="geometry">
-     <rect>
-      <x>123</x>
-      <y>9</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Setting Value</string>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblO2Ctl">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>676</x>
-      <y>10</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-      <horstretch>100</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/o2.png);background-color: rgb(32, 210, 0)</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblStartDateTime">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>10</y>
-      <width>241</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 170, 0);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblO2Ctl_2">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>713</x>
-      <y>10</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-      <horstretch>100</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/co2.png);background-color: rgb(200, 200, 200)</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblTempCtl">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>10</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-      <horstretch>100</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/temp.png);background-color: rgb(255, 150, 0)</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="ClickableLabel" name="lblHumidCtl">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>10</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-      <horstretch>100</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/humid.png);background-color: rgb(100, 100, 200)</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <zorder>label_2</zorder>
-   <zorder>label</zorder>
-   <zorder>btnHumidity</zorder>
-   <zorder>btnCO2</zorder>
-   <zorder>btnO2</zorder>
-   <zorder>btnTemperature</zorder>
-   <zorder>lblHumidity_2</zorder>
-   <zorder>lblHumidity</zorder>
-   <zorder>lblHumidity_3</zorder>
-   <zorder>lblTemp</zorder>
-   <zorder>lblHumidity_4</zorder>
-   <zorder>lblCO2</zorder>
-   <zorder>lblHumidity_5</zorder>
-   <zorder>lblO2</zorder>
-   <zorder>lblHumidity_6</zorder>
-   <zorder>lblHumidity_7</zorder>
-   <zorder>lblTemp_2</zorder>
-   <zorder>lblCO2_2</zorder>
-   <zorder>lblTempDisp</zorder>
-   <zorder>lblHumidityDisp</zorder>
-   <zorder>lblCo2Disp</zorder>
-   <zorder>lblO2Disp</zorder>
-   <zorder>lblDateTime</zorder>
-   <zorder>lblStatus</zorder>
-   <zorder>lblGreyGear</zorder>
-   <zorder>lblRedGear</zorder>
-   <zorder>lblBlueGear</zorder>
-   <zorder>lblGreenGear</zorder>
-   <zorder>lblGreyDown</zorder>
-   <zorder>lblGreyUp</zorder>
-   <zorder>lblRedDown</zorder>
-   <zorder>lblRedUp</zorder>
-   <zorder>lblBlueDown</zorder>
-   <zorder>lblBlueUp</zorder>
-   <zorder>lblGreenDown</zorder>
-   <zorder>lblGreenUp</zorder>
-   <zorder>lblOpenCam</zorder>
-   <zorder>lblYellowLight</zorder>
-   <zorder>lblBlueLight</zorder>
-   <zorder>lblStart</zorder>
-   <zorder>btnLowerBound</zorder>
-   <zorder>btnUpperBound</zorder>
-   <zorder>lblUpperBound</zorder>
-   <zorder>lblLowerBound</zorder>
-   <zorder>btnMiddleBound</zorder>
-   <zorder>lblMiddleBound</zorder>
-   <zorder>lblO2Ctl</zorder>
-   <zorder>lblStartDateTime</zorder>
-   <zorder>lblO2Ctl_2</zorder>
-   <zorder>lblTempCtl</zorder>
-   <zorder>lblHumidCtl</zorder>
   </widget>
  </widget>
  <customwidgets>

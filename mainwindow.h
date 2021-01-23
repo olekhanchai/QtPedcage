@@ -2,9 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "graphwindow.h"
 #include <QMap>
 #include <QTimer>
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
+#include <QTime>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,7 +21,27 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    struct CommandAttributes {
+        int length;
+        int consoleIndex;
+        int tableIndex;
+        QString command;
+    };
+
+    struct CommandQueue {
+        QString command;
+        int tableIndex;
+        bool showInConsole;
+    };
+
 private slots:
+
+    void onSerialPortReadyRead();
+    void onSerialPortError(QSerialPort::SerialPortError);
+    void openPort();
+    void sendCommand(QString command, int tableIndex = -1, bool showInConsole = true);
+    void onTimerConnection();
+    void onTimerStateQuery();
 
     void on_btnStart_clicked();
     void on_btnYellowLamp_clicked();
@@ -71,8 +93,34 @@ private slots:
     void initialSensor();
     void displaySensorValue();
     void togglePin(int pin, bool condition);
+    int bufferLength();
+
+    bool dataIsFloating(QString data);
+    bool dataIsEnd(QString data);
+    bool dataIsReset(QString data);
+
 private:
     Ui::MainWindow *ui;
+    QSerialPort m_serialPort;
+
+    bool m_reseting = false;
+    bool m_resetCompleted = true;
+    bool m_aborting = false;
+    bool m_statusReceived = false;
+
+    QStringList m_status;
+    QStringList m_statusCaptions;
+    QStringList m_statusBackColors;
+    QStringList m_statusForeColors;
+
+    QList<CommandAttributes> m_commands;
+    QList<CommandQueue> m_queue;
+
+    QTime m_startTime;
+    QTimer m_timerConnection;
+    QTimer m_timerStateQuery;
+
+
 
     int tempVal = 30;
     int humidityVal = 30;
@@ -108,6 +156,5 @@ private:
     QString strTemp = "";
     QString strCO2 = "";
     int fd;
-    GraphWindow g;
 };
 #endif // MAINWINDOW_H

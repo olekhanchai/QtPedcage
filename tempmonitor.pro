@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets charts
 
@@ -17,17 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     clickablelabel.cpp \
-    graphwindow.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     clickablelabel.h \
-    graphwindow.h \
     mainwindow.h
 
 FORMS += \
-    graphwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.

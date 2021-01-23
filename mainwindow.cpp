@@ -7,8 +7,11 @@
 //#include <wiringPi.h>
 #include <qdebug.h>
 #include <QSettings>
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 
 //int MainWindow::fd = 0;
+const int BUFFERLENGTH = 127;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -74,12 +77,33 @@ MainWindow::MainWindow(QWidget *parent)
     QTimer::connect(ui->lblGreenUp, SIGNAL(clicked()), this, SLOT(on_btnGreenUp_clicked()));
     QTimer::connect(ui->lblGreenUp, SIGNAL(released()), this,SLOT(on_btnGreenUp_released()));
 
+
+    // Setup serial port
+    m_serialPort.setParity(QSerialPort::NoParity);
+    m_serialPort.setDataBits(QSerialPort::Data8);
+    m_serialPort.setFlowControl(QSerialPort::NoFlowControl);
+    m_serialPort.setStopBits(QSerialPort::OneStop);
+
+
+    m_serialPort.setPortName("COM11");
+    m_serialPort.setBaudRate(115200);
+
+
+    connect(&m_serialPort, SIGNAL(readyRead()), this, SLOT(onSerialPortReadyRead()), Qt::QueuedConnection);
+    connect(&m_serialPort, SIGNAL(error(QSerialPort::SerialPortError)), this, SLOT(onSerialPortError(QSerialPort::SerialPortError)));
+
+    connect(&m_timerConnection, SIGNAL(timeout()), this, SLOT(onTimerConnection()));
+    connect(&m_timerStateQuery, SIGNAL(timeout()), this, SLOT(onTimerStateQuery()));
+    m_timerConnection.start(1000);
+    m_timerStateQuery.start(2000);
+
     //Start pet live time
     ui->btnLowerBound->setVisible(true);
     ui->lblLowerBound->setVisible(true);
     ui->lblLowerBound->setText("Start Treat");
     ui->lblStartDateTime->setStyleSheet("background-color: rgb(50, 50, 200);");
     ui->lblStartDateTime->setText("<html><head/><body><p><span style=\" color:#ffffff;\">Start Date/time</span></p></body></html>");
+    m_statusReceived = true;
 }
 
 MainWindow::~MainWindow()
@@ -263,15 +287,16 @@ void MainWindow::on_btnStart_clicked()
         settings->endGroup();
 
     }
+    sendCommand("P60 R255 G255 B255 N16\r\n");
 //    digitalWrite(0, !digitalRead(0));
 }
 
 void MainWindow::togglePin(int pin, bool condition)
 {
     if (condition) {
-//        digitalWrite(pin, 0);
+        sendCommand("P10 R1 S0\r\n");
     } else {
-//        digitalWrite(pin, 1);
+        sendCommand("P10 R1 S1\r\n");
     }
 }
 
@@ -292,7 +317,7 @@ void MainWindow::on_btnLowerBound_clicked()
 
 void MainWindow::on_btnYellowLamp_clicked()
 {
-    ui->lblYellowLight->setStyleSheet(mapYellowLight[ui->lblYellowLight->isClicked()]);
+     ui->lblYellowLight->setStyleSheet(mapYellowLight[ui->lblYellowLight->isClicked()]);
     togglePin(0, ui->lblYellowLight->isClicked());
 }
 
@@ -370,8 +395,7 @@ void MainWindow::on_btnGreenUpCtl_released()
 
 void MainWindow::on_btnRedCtl_clicked()
 {
-    g.show();
-    this->hide();
+
 }
 
 void MainWindow::on_btnBlueDown_clicked()
@@ -580,5 +604,178 @@ void MainWindow::showClock()
     //Show sensor value with clock timer
     displaySensorValue();
     ui->lblDateTime->setText(QDateTime::currentDateTime().toString("dd/MM/yyyy HH:mm:ss"));
-    if (!this->isActiveWindow() && !g.isActiveWindow()) this->show();
 }
+
+bool MainWindow::dataIsFloating(QString data) {
+    QStringList ends;
+
+    ends << "Reset to continue";
+    ends << "'$H'|'$X' to unlock";
+    ends << "ALARM: Soft limit";
+    ends << "ALARM: Hard limit";
+    ends << "Check Door";
+
+    foreach (QString str, ends) {
+        if (data.contains(str)) return true;
+    }
+
+    return false;
+}
+
+bool MainWindow::dataIsReset(QString data) {
+    return QRegExp("^GRBL|GCARVIN\\s\\d\\.\\d.").indexIn(data.toUpper()) != -1;
+}
+
+void MainWindow::onSerialPortReadyRead()
+{
+    while (m_serialPort.canReadLine()) {
+        QString data = m_serialPort.readLine().trimmed();
+
+        if (data.length() > 0 && data[0] == 'o' && data[1] == 'k') {
+
+            // Processed commands
+            if (m_commands.length() > 0) {
+
+                static QString response; // Full response string
+
+                if ((m_commands[0].command != "[CTRL+X]" && dataIsEnd(data))
+                        || (m_commands[0].command == "[CTRL+X]" && dataIsReset(data))) {
+
+                    response.append(data);
+
+                    // Take command from buffer
+                    CommandAttributes ca = m_commands.takeFirst();
+
+                    // Check queue
+                    if (m_queue.length() > 0) {
+                        CommandQueue cq = m_queue.takeFirst();
+                        while ((bufferLength() + cq.command.length() + 1) <= BUFFERLENGTH) {
+                            sendCommand(cq.command, cq.tableIndex, cq.showInConsole);
+                            if (m_queue.isEmpty()) break; else cq = m_queue.takeFirst();
+                        }
+                    }
+
+                    if (ca.command.contains("P60") && response.contains("ok")) {
+
+                    }
+
+                    response.clear();
+                } else {
+                    response.append(data + "; ");
+                }
+
+            } else {
+                // get current sensor value every 1 second.
+                QStringList params = data.split(" ");
+                foreach (QString vals, params) {
+                    QStringList val = vals.split(":");
+                    if (val.count() == 2) {
+                        QString unit = val.at(0);
+                        QString value = val.at(1);
+                        if (unit == "H") {
+                            humidityVal = value.toFloat();
+                        }
+                        if (unit == "T") {
+                            tempVal = value.toFloat();
+                        }
+                        if (unit == "C") {
+                            co2Val = value.toFloat();
+                        }
+                    }
+                }
+                m_statusReceived = true;
+            }
+        }
+    }
+}
+
+void MainWindow::onTimerConnection()
+{
+    if (!m_serialPort.isOpen()) {
+        openPort();
+    }
+}
+
+void MainWindow::onTimerStateQuery()
+{
+    if (m_serialPort.isOpen() && m_resetCompleted && m_statusReceived) {
+        m_serialPort.write("P27\r\n");
+        m_statusReceived = false;
+    }
+}
+
+void MainWindow::openPort()
+{
+    if (m_serialPort.open(QIODevice::ReadWrite)) {
+//        ui->txtStatus->setText(tr("Port opened"));
+//        ui->txtStatus->setStyleSheet(QString("background-color: palette(button); color: palette(text);"));
+////        updateControlsState();
+//        grblReset();
+    }
+}
+
+int MainWindow::bufferLength()
+{
+    int length = 0;
+
+    foreach (CommandAttributes ca, m_commands) {
+        length += ca.length;
+    }
+
+    return length;
+}
+
+void MainWindow::sendCommand(QString command, int tableIndex, bool showInConsole)
+{
+    if (!m_serialPort.isOpen()/* || !m_resetCompleted*/) return;
+
+    command = command.toUpper();
+
+    // Commands queue
+   if ((bufferLength() + command.length() + 1) > BUFFERLENGTH) {
+        qDebug() << "queue:" << command;
+
+        CommandQueue cq;
+
+        cq.command = command;
+        cq.tableIndex = tableIndex;
+        cq.showInConsole = showInConsole;
+
+        m_queue.append(cq);
+        return;
+    }
+
+    CommandAttributes ca;
+
+    ca.command = command;
+    ca.length = command.length() + 1;
+    ca.tableIndex = tableIndex;
+
+    m_commands.append(ca);
+
+    m_serialPort.write((command + "\r\n").toLatin1());
+}
+
+bool MainWindow::dataIsEnd(QString data) {
+    QStringList ends;
+
+    ends << "ok";
+    ends << "error";
+//    ends << "Reset to continue";
+//    ends << "'$' for help";
+//    ends << "'$H'|'$X' to unlock";
+//    ends << "Caution: Unlocked";
+//    ends << "Enabled";
+//    ends << "Disabled";
+//    ends << "Check Door";
+//    ends << "Pgm End";
+
+    foreach (QString str, ends) {
+        if (data.contains(str)) return true;
+    }
+
+    return false;
+}
+
+void MainWindow::onSerialPortError(QSerialPort::SerialPortError){};
+
