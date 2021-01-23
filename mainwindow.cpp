@@ -45,6 +45,8 @@ MainWindow::MainWindow(QWidget *parent)
     QTimer::connect(ui->lblMiddleBound, SIGNAL(clicked()), this, SLOT(on_btnMiddleBound_clicked()));
     QTimer::connect(ui->lblLowerBound, SIGNAL(clicked()), this, SLOT(on_btnLowerBound_clicked()));
 
+    QTimer::connect(ui->lblBack, SIGNAL(clicked()), this, SLOT(on_btnBack_clicked()));
+
     // Control temp
     QTimer::connect(ui->lblTempCtl, SIGNAL(clicked()), this, SLOT(on_btnRedCtl_clicked()));
     //QTimer::connect(ui->lblTempCtlDown, SIGNAL(released()), this, SLOT(on_btnRedDownCtl_released()));
@@ -147,10 +149,7 @@ void MainWindow::ToggleVisibleGroup(int button)
                 humidityMode = 0;
                 co2Mode = 0;
                 oxygenMode = 0;
-                ui->lblTempDisp->setText(QString::number(tempLowerVal) + QString::fromUtf8(" °C"));
-                ui->lblHumidityDisp->setText(QString::number(humidityLowerVal) + " %RH");
-                ui->lblCo2Disp->setText(QString::number(co2LowerVal) + " PPM");
-                ui->lblO2Disp->setText(QString::number(oxygenLowerVal) + " %");
+                updateDisplay("lower");
             };break;
             case 2: {
                 ui->btnLowerBound->setVisible(false);
@@ -160,10 +159,7 @@ void MainWindow::ToggleVisibleGroup(int button)
                 humidityMode = 1;
                 co2Mode = 1;
                 oxygenMode = 1;
-                ui->lblTempDisp->setText(QString::number(tempVal) + QString::fromUtf8(" °C"));
-                ui->lblHumidityDisp->setText(QString::number(humidityVal) + " %RH");
-                ui->lblCo2Disp->setText(QString::number(co2Val) + " PPM");
-                ui->lblO2Disp->setText(QString::number(oxygenVal) + " %");
+                updateDisplay();
             };break;
             case 3: {
                 ui->btnLowerBound->setVisible(false);
@@ -173,12 +169,29 @@ void MainWindow::ToggleVisibleGroup(int button)
                 humidityMode = 2;
                 co2Mode = 2;
                 oxygenMode = 2;
-                ui->lblTempDisp->setText(QString::number(tempUpperVal) + QString::fromUtf8(" °C"));
-                ui->lblHumidityDisp->setText(QString::number(humidityUpperVal) + " %RH");
-                ui->lblCo2Disp->setText(QString::number(co2UpperVal) + " PPM");
-                ui->lblO2Disp->setText(QString::number(oxygenUpperVal) + " %");
+
             };break;
         }
+}
+
+void MainWindow::updateDisplay(QString group)
+{
+    if (group.toUpper() == "UPPER") {
+        ui->lblTempDisp->setText(QString::number(tempUpperVal) + QString::fromUtf8(" °C"));
+        ui->lblHumidityDisp->setText(QString::number(humidityUpperVal) + " %RH");
+        ui->lblCo2Disp->setText(QString::number(co2UpperVal) + " PPM");
+        ui->lblO2Disp->setText(QString::number(oxygenUpperVal) + " %");
+    } else if (group.toUpper() == "LOWER") {
+        ui->lblTempDisp->setText(QString::number(tempLowerVal) + QString::fromUtf8(" °C"));
+        ui->lblHumidityDisp->setText(QString::number(humidityLowerVal) + " %RH");
+        ui->lblCo2Disp->setText(QString::number(co2LowerVal) + " PPM");
+        ui->lblO2Disp->setText(QString::number(oxygenLowerVal) + " %");
+    } else {
+        ui->lblTempDisp->setText(QString::number(tempVal) + QString::fromUtf8(" °C"));
+        ui->lblHumidityDisp->setText(QString::number(humidityVal) + " %RH");
+        ui->lblCo2Disp->setText(QString::number(co2Val) + " PPM");
+        ui->lblO2Disp->setText(QString::number(oxygenVal) + " %");
+    }
 }
 
 void MainWindow::CO2VisibleGroup(bool visible)
@@ -395,7 +408,8 @@ void MainWindow::on_btnGreenUpCtl_released()
 
 void MainWindow::on_btnRedCtl_clicked()
 {
-
+    ui->stackedWidget->widget(1)->show();
+    ui->stackedWidget->widget(0)->hide();
 }
 
 void MainWindow::on_btnBlueDown_clicked()
@@ -557,52 +571,10 @@ void MainWindow::initialSensor()
 //    }
 }
 
-void MainWindow::displaySensorValue()
-{
-//    int fd = serialOpen("/dev/ttyS0", 9600);
-//    serialFlush(fd);
-//    if (fd != -1) {
-//            serialPuts(fd, "Q\r\n");
-//            while (serialDataAvail(fd)) {
-//                QChar temp = QChar(serialGetchar(fd));
-//                if (temp == 'H') {
-//                    for(int i = 0; i < 6; i++){
-//                        QChar temp = QChar(serialGetchar(fd));
-//                        strHumidity.push_back(QString(temp));
-//                    }
-//                }
-//                if (temp == 'T') {
-//                    for(int i = 0; i < 6; i++){
-//                        QChar temp = QChar(serialGetchar(fd));
-//                        strTemp.push_back(QString(temp));
-//                    }
-//                }
-//                if (temp == 'Z') {
-//                    for(int i = 0; i < 6; i++){
-//                        QChar temp = QChar(serialGetchar(fd));
-//                        strCO2.push_back(QString(temp));
-//                    }
-//                    break;
-//                }
-////                if (temp == "\uffff") {
-////                    serialFlush(fd);
-////                    break;
-////                }
-//            }
-//            double humidity = strHumidity.toInt() / 10.0;
-//            double temp1 = (strTemp.toInt() - 1000) / 10.0;
-//            int Co2 = strCO2.toInt() * 10;
-//            ui->lblHumidityDisp->setText(QString::number(humidity) + QString::fromUtf8(" %RH"));
-//            ui->lblTempDisp->setText(QString::number(temp1) + QString::fromUtf8(" °C"));
-//            ui->lblCo2Disp->setText(QString::number(Co2) + QString::fromUtf8(" ppm"));
-//    }
-//    //serialClose(fd);
-}
-
 void MainWindow::showClock()
 {
     //Show sensor value with clock timer
-    displaySensorValue();
+    updateDisplay();
     ui->lblDateTime->setText(QDateTime::currentDateTime().toString("dd/MM/yyyy HH:mm:ss"));
 }
 
@@ -658,7 +630,7 @@ void MainWindow::onSerialPortReadyRead()
                     if (ca.command.contains("P60") && response.contains("ok")) {
 
                     }
-
+                    m_statusReceived = true;
                     response.clear();
                 } else {
                     response.append(data + "; ");
@@ -681,10 +653,13 @@ void MainWindow::onSerialPortReadyRead()
                         if (unit == "C") {
                             co2Val = value.toFloat();
                         }
+                        if (unit == "O") {
+                            oxygenVal = value.toFloat();
+                        }
                     }
                 }
-                m_statusReceived = true;
             }
+            m_statusReceived = true;
         }
     }
 }
@@ -699,8 +674,9 @@ void MainWindow::onTimerConnection()
 void MainWindow::onTimerStateQuery()
 {
     if (m_serialPort.isOpen() && m_resetCompleted && m_statusReceived) {
-        m_serialPort.write("P27\r\n");
-        m_statusReceived = false;
+        m_serialPort.write("P70\r\n");
+        m_serialPort.write("P50\r\n");
+        //m_statusReceived = false;
     }
 }
 
@@ -779,3 +755,8 @@ bool MainWindow::dataIsEnd(QString data) {
 
 void MainWindow::onSerialPortError(QSerialPort::SerialPortError){};
 
+void MainWindow::on_btnBack_clicked() {
+    ui->stackedWidget->widget(0)->show();
+    ui->stackedWidget->widget(0)->resize(MainWindow::width(), MainWindow::height());
+    ui->stackedWidget->widget(1)->hide();
+}

@@ -81,6 +81,7 @@ private slots:
     void on_btnGreenUpCtl_released();
 
     void on_btnRedCtl_clicked();
+    void on_btnBack_clicked();
 
     void SetupVisibleGroup(bool visible);
     void ToggleVisibleGroup(int button);
@@ -91,7 +92,6 @@ private slots:
 
     void showClock();
     void initialSensor();
-    void displaySensorValue();
     void togglePin(int pin, bool condition);
     int bufferLength();
 
@@ -120,22 +120,22 @@ private:
     QTimer m_timerConnection;
     QTimer m_timerStateQuery;
 
+    void updateDisplay(QString group = "");
 
+    double tempVal = 0;
+    double humidityVal = 0;
+    double co2Val = 0;
+    double oxygenVal = 0;
 
-    int tempVal = 30;
-    int humidityVal = 30;
-    int co2Val = 30;
-    int oxygenVal = 30;
+    double tempLowerVal = 20;
+    double humidityLowerVal = 50;
+    double co2LowerVal = 200;
+    double oxygenLowerVal = 25;
 
-    int tempLowerVal = 20;
-    int humidityLowerVal = 50;
-    int co2LowerVal = 200;
-    int oxygenLowerVal = 25;
-
-    int tempUpperVal = 40;
-    int humidityUpperVal = 100;
-    int co2UpperVal = 999;
-    int oxygenUpperVal = 100;
+    double tempUpperVal = 40;
+    double humidityUpperVal = 100;
+    double co2UpperVal = 999;
+    double oxygenUpperVal = 100;
 
     int tempMode = 0;
     int humidityMode = 0;

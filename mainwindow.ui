@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>494</height>
+    <height>503</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -565,7 +565,7 @@
      <widget class="QLabel" name="lblHumidityDisp">
       <property name="geometry">
        <rect>
-        <x>600</x>
+        <x>612</x>
         <y>135</y>
         <width>171</width>
         <height>41</height>
@@ -1116,18 +1116,14 @@
      <zorder>label_2</zorder>
      <zorder>btnCO2</zorder>
      <zorder>lblCo2Background</zorder>
-     <zorder>lblGreyGear</zorder>
      <zorder>lblCO2</zorder>
-     <zorder>lblRedGear</zorder>
      <zorder>btnTemperature</zorder>
      <zorder>lblTempBackground</zorder>
      <zorder>btnHumidity</zorder>
      <zorder>lblHumidityBackground</zorder>
-     <zorder>lblGreenGear</zorder>
      <zorder>btnO2</zorder>
      <zorder>lblO2Background</zorder>
      <zorder>lblTemp</zorder>
-     <zorder>lblBlueGear</zorder>
      <zorder>lblHumidity</zorder>
      <zorder>lblO2</zorder>
      <zorder>lblTempDisp</zorder>
@@ -1163,6 +1159,10 @@
      <zorder>lblStart</zorder>
      <zorder>lblGreenDown</zorder>
      <zorder>lblO2Icon</zorder>
+     <zorder>lblBlueGear</zorder>
+     <zorder>lblGreenGear</zorder>
+     <zorder>lblGreyGear</zorder>
+     <zorder>lblRedGear</zorder>
     </widget>
     <widget class="QWidget" name="page2">
      <widget class="QLabel" name="lblDateTime_2">
@@ -1442,7 +1442,7 @@ border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
        <rect>
         <x>40</x>
         <y>150</y>
-        <width>741</width>
+        <width>731</width>
         <height>271</height>
        </rect>
       </property>
@@ -1577,6 +1577,26 @@ border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+     <zorder>btnTemperature_2</zorder>
+     <zorder>btnLowerBound_5</zorder>
+     <zorder>lblStartDateTime_2</zorder>
+     <zorder>lblDateTime_2</zorder>
+     <zorder>btnLowerBound_2</zorder>
+     <zorder>label_3</zorder>
+     <zorder>btnLowerBound_3</zorder>
+     <zorder>lblTemp_3</zorder>
+     <zorder>btnLowerBound_4</zorder>
+     <zorder>lblRedGear_2</zorder>
+     <zorder>lblLowerBound_6</zorder>
+     <zorder>lblTemp_4</zorder>
+     <zorder>label_4</zorder>
+     <zorder>gView</zorder>
+     <zorder>lblLowerBound_4</zorder>
+     <zorder>lblLowerBound_2</zorder>
+     <zorder>lblLowerBound_3</zorder>
+     <zorder>lblTempCtl_2</zorder>
+     <zorder>lblBack</zorder>
+     <zorder>lblLowerBound_5</zorder>
     </widget>
    </widget>
   </widget>
