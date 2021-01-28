@@ -87,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_serialPort.setStopBits(QSerialPort::OneStop);
 
 
-    m_serialPort.setPortName("COM11");
+    m_serialPort.setPortName("/dev/ttyUSB0");
     m_serialPort.setBaudRate(115200);
 
 
@@ -307,9 +307,9 @@ void MainWindow::on_btnStart_clicked()
 void MainWindow::togglePin(int pin, bool condition)
 {
     if (condition) {
-        sendCommand("P10 R1 S0\r\n");
+        sendCommand("P10 R1 S0");
     } else {
-        sendCommand("P10 R1 S1\r\n");
+        sendCommand("P10 R1 S1");
     }
 }
 
@@ -603,7 +603,7 @@ void MainWindow::onSerialPortReadyRead()
     while (m_serialPort.canReadLine()) {
         QString data = m_serialPort.readLine().trimmed();
 
-        if (data.length() > 0 && data[0] == 'o' && data[1] == 'k') {
+        if (data.length() > 0) {
 
             // Processed commands
             if (m_commands.length() > 0) {
@@ -729,7 +729,7 @@ void MainWindow::sendCommand(QString command, int tableIndex, bool showInConsole
 
     m_commands.append(ca);
 
-    m_serialPort.write((command + "\r\n").toLatin1());
+    m_serialPort.write((command + "\r").toLatin1());
 }
 
 bool MainWindow::dataIsEnd(QString data) {

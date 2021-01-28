@@ -44,7 +44,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>26</pointsize>
+        <pointsize>22</pointsize>
        </font>
       </property>
       <property name="text">
@@ -187,7 +187,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>26</pointsize>
+        <pointsize>22</pointsize>
        </font>
       </property>
       <property name="text">
@@ -315,7 +315,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>760</x>
+        <x>740</x>
         <y>20</y>
         <width>31</width>
         <height>31</height>
@@ -348,7 +348,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>26</pointsize>
+        <pointsize>22</pointsize>
        </font>
       </property>
       <property name="text">
@@ -389,7 +389,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>650</x>
+        <x>630</x>
         <y>20</y>
         <width>31</width>
         <height>31</height>
@@ -573,7 +573,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>26</pointsize>
+        <pointsize>22</pointsize>
        </font>
       </property>
       <property name="text">
@@ -838,7 +838,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>723</x>
+        <x>703</x>
         <y>20</y>
         <width>31</width>
         <height>31</height>
@@ -871,7 +871,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>18</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="text">
@@ -903,7 +903,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>686</x>
+        <x>666</x>
         <y>20</y>
         <width>31</width>
         <height>31</height>
