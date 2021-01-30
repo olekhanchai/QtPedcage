@@ -221,7 +221,13 @@ void MainWindow::on_btnPlug_clicked()
 void MainWindow::on_btnCamOn_clicked()
 {
     ui->lblOpenCam->setStyleSheet(mapOpenCam[ui->lblOpenCam->isClicked()]);
-    sendCommand("P20");
+    if (ui->lblOpenCam->isClicked()) {
+        sendCommand("P20 V255");
+        sendCommand("P10 R1 S0");
+    } else {
+        sendCommand("P20 V0");
+        sendCommand("P10 R1 S1");
+    }
 }
 
 void MainWindow::on_btnRedDown_clicked()
@@ -303,6 +309,7 @@ void MainWindow::on_btnRedCtl_clicked()
     chart->setTitle("Simple line chart example");
     ui->gView = new QChartView(chart);
     ui->gView->setRenderHint(QPainter::Antialiasing);
+    ui->gView->repaint();
 }
 
 void MainWindow::on_btnBlueDown_clicked()
