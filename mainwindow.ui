@@ -1244,7 +1244,6 @@
      <zorder>lblPeltierCooler</zorder>
      <zorder>btnMiddleBound</zorder>
      <zorder>lblMiddleBound</zorder>
-     <zorder>lblNeoPixel</zorder>
      <zorder>lblPlug</zorder>
      <zorder>lblDateTime</zorder>
      <zorder>btnMiddleBound_3</zorder>
@@ -1256,6 +1255,7 @@
      <zorder>btnMiddleBound_5</zorder>
      <zorder>lblMiddleBound_5</zorder>
      <zorder>lblOpenCam</zorder>
+     <zorder>lblNeoPixel</zorder>
     </widget>
     <widget class="QWidget" name="page2">
      <widget class="QLabel" name="lblDateTime_2">
