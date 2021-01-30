@@ -112,17 +112,17 @@ void MainWindow::updateDisplay(QString group)
         ui->lblTempDisp->setText(QString::number(tempUpperVal) + QString::fromUtf8(" °C"));
         ui->lblHumidityDisp->setText(QString::number(humidityUpperVal) + " %RH");
         ui->lblCo2Disp->setText(QString::number(co2UpperVal) + " PPM");
-        //ui->lblO2Disp->setText(QString::number(oxygenUpperVal) + " %");
+        ui->lblOxigenDisp->setText(QString::number(oxygenUpperVal) + " %");
     } else if (group.toUpper() == "LOWER") {
         ui->lblTempDisp->setText(QString::number(tempLowerVal) + QString::fromUtf8(" °C"));
         ui->lblHumidityDisp->setText(QString::number(humidityLowerVal) + " %RH");
         ui->lblCo2Disp->setText(QString::number(co2LowerVal) + " PPM");
-        //ui->lblO2Disp->setText(QString::number(oxygenLowerVal) + " %");
+        ui->lblOxigenDisp->setText(QString::number(oxygenLowerVal) + " %");
     } else {
         ui->lblTempDisp->setText(QString::number(tempVal) + QString::fromUtf8(" °C"));
         ui->lblHumidityDisp->setText(QString::number(humidityVal) + " %RH");
         ui->lblCo2Disp->setText(QString::number(co2Val) + " PPM");
-        //ui->lblO2Disp->setText(QString::number(oxygenVal) + " %");
+        ui->lblOxigenDisp->setText(QString::number(oxygenVal) + " %");
     }
 }
 
