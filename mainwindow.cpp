@@ -193,7 +193,11 @@ void MainWindow::on_btnBlueLamp_clicked()
 void MainWindow::on_btnNeoPixel_clicked()
 {
     ui->lblNeoPixel->setStyleSheet(mapNeoPixel[ui->lblNeoPixel->isClicked()]);
-    sendCommand("P60 R255 G255 B255");
+    if (ui->lblNeoPixel->isClicked()) {
+        sendCommand("P60 R255 G255 B255");
+    } else {
+        sendCommand("P60 R0 G0 B0");
+    }
 }
 
 void MainWindow::on_btnPeltierCooler_clicked()
