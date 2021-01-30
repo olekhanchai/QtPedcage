@@ -42,8 +42,8 @@ private slots:
     void sendCommand(QString command, int tableIndex = -1, bool showInConsole = true);
     void onTimerConnection();
     void onTimerStateQuery();
+    void onTimerLogData();
 
-    void on_btnYellowLamp_clicked();
     void on_btnNeoPixel_clicked();
     void on_btnPeltierCooler_clicked();
     void on_btnSystemFan_clicked();
@@ -86,21 +86,15 @@ private slots:
     void on_btnRedCtl_clicked();
     void on_btnBack_clicked();
 
-    void SetupVisibleGroup(bool visible);
-    void ToggleVisibleGroup(int button);
     void CO2VisibleGroup(bool visible);
     void TempVisibleGroup(bool visible);
     void O2VisibleGroup(bool visible);
     void HumidityVisibleGroup(bool visible);
 
     void showClock();
-    void initialSensor();
     void togglePin(int pin, bool condition);
     int bufferLength();
-
-    bool dataIsFloating(QString data);
     bool dataIsEnd(QString data);
-    bool dataIsReset(QString data);
 
 private:
     Ui::MainWindow *ui;
@@ -122,6 +116,7 @@ private:
     QTime m_startTime;
     QTimer m_timerConnection;
     QTimer m_timerStateQuery;
+    QTimer m_timerLogData;
 
     void updateDisplay(QString group = "");
 
@@ -146,6 +141,9 @@ private:
     int oxygenMode = 0;
 
     QTimer mTimer;
+
+    QMap<QString, int> mapRelay = {{"PeltierFan",1}, {"DownFan",2}, {"Heater",4}, {"Plug",6}, {"Nebulizer",7}, {"UV", 8}};
+
     QMap<btnColor, QString> mapPush = {{red, "image: url(:/reddownpush.png);"},{blue,"image: url(:/bluedownpush.png);"},{grey,"image: url(:/greydownpush.png);"},{green, "image: url(:/greendownpush.png);"}};
     QMap<btnColor, QString> mapRelease = {{red, "image: url(:/reddown.png);"},{blue,"image: url(:/bluedown.png);"},{grey,"image: url(:/greydown.png);"},{green, "image: url(:/greendown.png);"}};
     QMap<btnColor, QString> mapPushUp = {{red, "image: url(:/reduppush.png);"},{blue,"image: url(:/blueuppush.png);"},{grey,"image: url(:/greyuppush.png);"},{green, "image: url(:/greenuppush.png);"}};
@@ -155,10 +153,7 @@ private:
     QMap<bool, QString> mapPeltier = {{true, "image: url(:/greenice.png);"}, {false, "image: url(:/offgreenice.png);"}};
     QMap<bool, QString> mapSystemFan = {{true, "image: url(:/greenfan.png);"}, {false, "image: url(:/offgreenfan.png);"}};
     QMap<bool, QString> mapPlug = {{true, "image: url(:/plug.png);"}, {false, "image: url(:/offplug.png);"}};
-    QMap<bool, QString> mapYellowLight = {{true, "image: url(:/yellolamp.png);"}, {false, "image: url(:/offlamp.png);"}};
     QMap<bool, QString> mapOpenCam = {{true, "image: url(:/camera.png);"},{false, "image: url(:/offcam.png);"}};
-    QMap<bool, QString> mapStart = {{true, "image: url(:/green.png);"},{false, "image: url(:/gear.png);"}};
-    QMap<bool, QString> mapStartText = {{true, "Normal Running State"},{false, "System Settings"}};
     QString strHumidity = "";
     QString strTemp = "";
     QString strCO2 = "";

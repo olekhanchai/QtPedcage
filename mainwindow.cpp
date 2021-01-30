@@ -9,6 +9,7 @@
 #include <QSettings>
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
+#include <qfile.h>
 
 //int MainWindow::fd = 0;
 const int BUFFERLENGTH = 127;
@@ -19,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    initialSensor();
 //    wiringPiSetup();
 //    pinMode(0, OUTPUT);
 //    pinMode(1, OUTPUT);
@@ -30,7 +30,6 @@ MainWindow::MainWindow(QWidget *parent)
     QTimer::singleShot(0, this, SLOT(showFullScreen()));
     connect(&mTimer, SIGNAL(timeout()), this, SLOT(showClock()));
 
-    SetupVisibleGroup(false);
     CO2VisibleGroup(false);
     TempVisibleGroup(false);
     O2VisibleGroup(false);
@@ -42,12 +41,6 @@ MainWindow::MainWindow(QWidget *parent)
     QTimer::connect(ui->lblPeltierCooler, SIGNAL(clicked()),this, SLOT(on_btnPeltierCooler_clicked()));
     QTimer::connect(ui->lblSystemFan, SIGNAL(clicked()), this, SLOT(on_btnSystemFan_clicked()));
     QTimer::connect(ui->lblPlug, SIGNAL(clicked()), this, SLOT(on_btnPlug_clicked()));
-
-//    QTimer::connect(ui->lblUpperBound, SIGNAL(clicked()), this, SLOT(on_btnUpperBound_clicked()));
-//    QTimer::connect(ui->lblMiddleBound, SIGNAL(clicked()), this, SLOT(on_btnMiddleBound_clicked()));
-//    QTimer::connect(ui->lblLowerBound, SIGNAL(clicked()), this, SLOT(on_btnLowerBound_clicked()));
-
-//    QTimer::connect(ui->lblBack, SIGNAL(clicked()), this, SLOT(on_btnBack_clicked()));
 
     // Control temp
     //QTimer::connect(ui->lblTempCtl, SIGNAL(clicked()), this, SLOT(on_btnRedCtl_clicked()));
@@ -98,15 +91,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(&m_timerConnection, SIGNAL(timeout()), this, SLOT(onTimerConnection()));
     connect(&m_timerStateQuery, SIGNAL(timeout()), this, SLOT(onTimerStateQuery()));
+    connect(&m_timerLogData, SIGNAL(timeout()), this, SLOT(onTimerLogData()));
+
     m_timerConnection.start(1000);
     m_timerStateQuery.start(2000);
-
-    //Start pet live time
-//    ui->btnLowerBound->setVisible(true);
-//    ui->lblLowerBound->setVisible(true);
-//    ui->lblLowerBound->setText("Start Treat");
-    //ui->lblStartDateTime->setStyleSheet("background-color: rgb(50, 50, 200);");
-    //ui->lblStartDateTime->setText("<html><head/><body><p><span style=\" color:#ffffff;\">Start Date/time</span></p></body></html>");
+    m_timerLogData.start(60000);
     m_statusReceived = true;
 }
 
@@ -116,65 +105,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::SetupVisibleGroup(bool visible)
-{
-//        ui->lblUpperBound->setVisible(visible);
-//        ui->lblLowerBound->setVisible(visible);
-//        ui->lblMiddleBound->setVisible(visible);
-//        ui->btnMiddleBound->setVisible(false);
-//        ui->btnUpperBound->setVisible(false);
-//        ui->btnLowerBound->setVisible(visible);
-
-//        //ui->lblGreyGear->setVisible(false);
-//        ui->lblGreenGear->setVisible(false);
-//        ui->lblBlueGear->setVisible(false);
-//        ui->lblRedGear->setVisible(false);
-}
-
-void MainWindow::ToggleVisibleGroup(int button)
-{
-
-//        ui->lblGreyGear->setVisible(true);
-//        ui->lblGreenGear->setVisible(true);
-//        ui->lblBlueGear->setVisible(true);
-//        ui->lblRedGear->setVisible(true);
-
-        //ui->lblUpperBound->setVisible(true);
-        //ui->lblMiddleBound->setVisible(true);
-        //ui->lblLowerBound->setVisible(true);
-        switch (button) {
-            case 1: {
-                //ui->btnLowerBound->setVisible(true);
-                //ui->btnMiddleBound->setVisible(false);
-                //ui->btnUpperBound->setVisible(false);
-                tempMode = 0;
-                humidityMode = 0;
-                co2Mode = 0;
-                oxygenMode = 0;
-                updateDisplay("lower");
-            };break;
-            case 2: {
-                //ui->btnLowerBound->setVisible(false);
-               // ui->btnMiddleBound->setVisible(true);
-                //ui->btnUpperBound->setVisible(false);
-                tempMode = 1;
-                humidityMode = 1;
-                co2Mode = 1;
-                oxygenMode = 1;
-                updateDisplay();
-            };break;
-            case 3: {
-                //ui->btnLowerBound->setVisible(false);
-                //ui->btnMiddleBound->setVisible(false);
-                //ui->btnUpperBound->setVisible(true);
-                tempMode = 2;
-                humidityMode = 2;
-                co2Mode = 2;
-                oxygenMode = 2;
-
-            };break;
-        }
-}
 
 void MainWindow::updateDisplay(QString group)
 {
@@ -226,62 +156,56 @@ void MainWindow::HumidityVisibleGroup(bool visible)
 
 void MainWindow::togglePin(int pin, bool condition)
 {
-    if (condition) {
-        sendCommand("P10 R1 S0");
-    } else {
-        sendCommand("P10 R1 S1");
+    QString cmd = "P10 R" + QString(pin) + " S1";
+    if (!condition) {
+        cmd = "P10 R" + QString(pin) + " S0";
     }
+    sendCommand(cmd);
 }
 
 void MainWindow::on_btnUpperBound_clicked()
 {
-    ToggleVisibleGroup(3);
+
 }
 
 void MainWindow::on_btnMiddleBound_clicked()
 {
-    ToggleVisibleGroup(2);
+
 }
 
 void MainWindow::on_btnLowerBound_clicked()
 {
-    ToggleVisibleGroup(1);
-}
 
-void MainWindow::on_btnYellowLamp_clicked()
-{
-    //ui->lblYellowLight->setStyleSheet(mapYellowLight[ui->lblYellowLight->isClicked()]);
-    //togglePin(0, ui->lblYellowLight->isClicked());
 }
 
 void MainWindow::on_btnBlueLamp_clicked()
 {
     ui->lblBlueLight->setStyleSheet(mapBlueLight[ui->lblBlueLight->isClicked()]);
-    togglePin(1, ui->lblBlueLight->isClicked());
+    togglePin(mapRelay["UV"], ui->lblBlueLight->isClicked());
 }
 
 void MainWindow::on_btnNeoPixel_clicked()
 {
     ui->lblNeoPixel->setStyleSheet(mapNeoPixel[ui->lblNeoPixel->isClicked()]);
-    togglePin(1, ui->lblNeoPixel->isClicked());
+    togglePin(9, ui->lblNeoPixel->isClicked());
 }
 
 void MainWindow::on_btnPeltierCooler_clicked()
 {
     ui->lblPeltierCooler->setStyleSheet(mapPeltier[ui->lblPeltierCooler->isClicked()]);
-    togglePin(1, ui->lblPeltierCooler->isClicked());
+    togglePin(mapRelay["PeltierFan"], ui->lblPeltierCooler->isClicked());
 }
 
 void MainWindow::on_btnSystemFan_clicked()
 {
     ui->lblSystemFan->setStyleSheet(mapSystemFan[ui->lblSystemFan->isClicked()]);
-    togglePin(1, ui->lblSystemFan->isClicked());
+    togglePin(mapRelay["DownFan"], ui->lblSystemFan->isClicked());
 }
 
 void MainWindow::on_btnPlug_clicked()
 {
     ui->lblPlug->setStyleSheet(mapPlug[ui->lblPlug->isClicked()]);
-    togglePin(1, ui->lblPlug->isClicked());
+    togglePin(mapRelay["Plug"], ui->lblPlug->isClicked());
 }
 
 void MainWindow::on_btnCamOn_clicked()
@@ -505,41 +429,11 @@ void MainWindow::on_btnGreenUp_released()
     ui->lblGreenUp->setStyleSheet(mapReleaseUp[btnColor::green]);
 }
 
-void MainWindow::initialSensor()
-{
-//    fd = serialOpen("/dev/ttyS0", 9600);
-//    if (fd != -1) {
-//        serialPuts(fd, "G\r\n");
-//        serialPuts(fd, "M 04164\r\n");
-//        serialPuts(fd, "K 2\r\n");
-//    }
-}
-
 void MainWindow::showClock()
 {
     //Show sensor value with clock timer
     updateDisplay();
     ui->lblDateTime->setText(QDateTime::currentDateTime().toString("dd/MM/yyyy HH:mm:ss"));
-}
-
-bool MainWindow::dataIsFloating(QString data) {
-    QStringList ends;
-
-    ends << "Reset to continue";
-    ends << "'$H'|'$X' to unlock";
-    ends << "ALARM: Soft limit";
-    ends << "ALARM: Hard limit";
-    ends << "Check Door";
-
-    foreach (QString str, ends) {
-        if (data.contains(str)) return true;
-    }
-
-    return false;
-}
-
-bool MainWindow::dataIsReset(QString data) {
-    return QRegExp("^GRBL|GCARVIN\\s\\d\\.\\d.").indexIn(data.toUpper()) != -1;
 }
 
 void MainWindow::onSerialPortReadyRead()
@@ -554,8 +448,7 @@ void MainWindow::onSerialPortReadyRead()
 
                 static QString response; // Full response string
 
-                if ((m_commands[0].command != "[CTRL+X]" && dataIsEnd(data))
-                        || (m_commands[0].command == "[CTRL+X]" && dataIsReset(data))) {
+                if ((m_commands[0].command != "[CTRL+X]" && dataIsEnd(data))) {
 
                     response.append(data);
 
@@ -622,6 +515,18 @@ void MainWindow::onTimerStateQuery()
         m_serialPort.write("P50\r\n");
         //m_statusReceived = false;
     }
+}
+
+void MainWindow::onTimerLogData()
+{
+    QString filename="Data.txt";
+    QFile file( filename );
+    if ( file.open(QIODevice::Append) )
+    {
+        QTextStream stream( &file );
+        stream << "T:" << tempVal << ",H:" << humidityVal << ",C:" << co2Val << ",O:" << oxygenVal << endl;
+    }
+    file.close();
 }
 
 void MainWindow::openPort()
