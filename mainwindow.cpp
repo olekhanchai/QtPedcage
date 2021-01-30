@@ -10,6 +10,8 @@
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 #include <qfile.h>
+#include <qlineseries.h>
+#include <QtCharts>
 
 //int MainWindow::fd = 0;
 const int BUFFERLENGTH = 127;
@@ -41,6 +43,10 @@ MainWindow::MainWindow(QWidget *parent)
     QTimer::connect(ui->lblPeltierCooler, SIGNAL(clicked()),this, SLOT(on_btnPeltierCooler_clicked()));
     QTimer::connect(ui->lblSystemFan, SIGNAL(clicked()), this, SLOT(on_btnSystemFan_clicked()));
     QTimer::connect(ui->lblPlug, SIGNAL(clicked()), this, SLOT(on_btnPlug_clicked()));
+    QTimer::connect(ui->lblTempIcon, SIGNAL(clicked()), this, SLOT(on_btnRedCtl_clicked()));
+
+    QTimer::connect(ui->lblBack, SIGNAL(clicked()), this, SLOT(on_btnBack_clicked()));
+
 
     // Control temp
     //QTimer::connect(ui->lblTempCtl, SIGNAL(clicked()), this, SLOT(on_btnRedCtl_clicked()));
@@ -109,20 +115,20 @@ MainWindow::~MainWindow()
 void MainWindow::updateDisplay(QString group)
 {
     if (group.toUpper() == "UPPER") {
-        ui->lblTempDisp->setText(QString::number(tempUpperVal) + QString::fromUtf8(" °C"));
-        ui->lblHumidityDisp->setText(QString::number(humidityUpperVal) + " %RH");
-        ui->lblCo2Disp->setText(QString::number(co2UpperVal) + " PPM");
-        ui->lblOxigenDisp->setText(QString::number(oxygenUpperVal) + " %");
+        ui->lblTempDisp->setText(QString::number(tempUpperVal,'f',2) + QString::fromUtf8(" °C"));
+        ui->lblHumidityDisp->setText(QString::number(humidityUpperVal,'f',2) + " %RH");
+        ui->lblCo2Disp->setText(QString::number(co2UpperVal,'f',2) + " PPM");
+        ui->lblOxigenDisp->setText(QString::number(oxygenUpperVal,'f',2) + " %");
     } else if (group.toUpper() == "LOWER") {
-        ui->lblTempDisp->setText(QString::number(tempLowerVal) + QString::fromUtf8(" °C"));
-        ui->lblHumidityDisp->setText(QString::number(humidityLowerVal) + " %RH");
-        ui->lblCo2Disp->setText(QString::number(co2LowerVal) + " PPM");
-        ui->lblOxigenDisp->setText(QString::number(oxygenLowerVal) + " %");
+        ui->lblTempDisp->setText(QString::number(tempLowerVal,'f',2) + QString::fromUtf8(" °C"));
+        ui->lblHumidityDisp->setText(QString::number(humidityLowerVal,'f',2) + " %RH");
+        ui->lblCo2Disp->setText(QString::number(co2LowerVal,'f',2) + " PPM");
+        ui->lblOxigenDisp->setText(QString::number(oxygenLowerVal,'f',2) + " %");
     } else {
-        ui->lblTempDisp->setText(QString::number(tempVal) + QString::fromUtf8(" °C"));
-        ui->lblHumidityDisp->setText(QString::number(humidityVal) + " %RH");
+        ui->lblTempDisp->setText(QString::number(tempVal,'f',2) + QString::fromUtf8(" °C"));
+        ui->lblHumidityDisp->setText(QString::number(humidityVal,'f',2) + " %RH");
         ui->lblCo2Disp->setText(QString::number(co2Val) + " PPM");
-        ui->lblOxigenDisp->setText(QString::number(oxygenVal) + " %");
+        ui->lblOxigenDisp->setText(QString::number(oxygenVal,'f',2) + " %");
     }
 }
 
@@ -156,9 +162,9 @@ void MainWindow::HumidityVisibleGroup(bool visible)
 
 void MainWindow::togglePin(int pin, bool condition)
 {
-    QString cmd = QString("P10 R%1 S1").arg(pin);
+    QString cmd = QString("P10 R%1 S0").arg(pin);
     if (!condition) {
-        cmd = QString("P10 R%1 S0").arg(pin);
+        cmd = QString("P10 R%1 S1").arg(pin);
     }
     sendCommand(cmd);
 }
@@ -277,7 +283,21 @@ void MainWindow::on_btnGreenUpCtl_released()
 void MainWindow::on_btnRedCtl_clicked()
 {
     ui->stackedWidget->widget(1)->show();
+    ui->stackedWidget->widget(1)->resize(800, 480);
     ui->stackedWidget->widget(0)->hide();
+    QLineSeries *series = new QLineSeries();
+    series->append(0, 6);
+    series->append(2, 4);
+    series->append(3, 8);
+    series->append(7, 4);
+    series->append(10, 5);
+    QChart *chart = new QChart();
+    chart->legend()->hide();
+    chart->addSeries(series);
+    chart->createDefaultAxes();
+    chart->setTitle("Simple line chart example");
+    ui->gView = new QChartView(chart);
+    ui->gView->setRenderHint(QPainter::Antialiasing);
 }
 
 void MainWindow::on_btnBlueDown_clicked()
@@ -490,6 +510,9 @@ void MainWindow::onSerialPortReadyRead()
                         if (unit == "C") {
                             co2Val = value.toFloat();
                         }
+                        if (unit == "Z") {
+                            co2Val = value.toFloat();
+                        }
                         if (unit == "O") {
                             oxygenVal = value.toFloat();
                         }
@@ -511,7 +534,7 @@ void MainWindow::onTimerConnection()
 void MainWindow::onTimerStateQuery()
 {
     if (m_serialPort.isOpen() && m_resetCompleted && m_statusReceived) {
-        m_serialPort.write("P70\r\n");
+        m_serialPort.write("P40\r\n");
         m_serialPort.write("P50\r\n");
         //m_statusReceived = false;
     }

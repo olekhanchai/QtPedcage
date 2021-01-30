@@ -103,8 +103,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>6</x>
-        <y>344</y>
+        <x>5</x>
+        <y>276</y>
         <width>60</width>
         <height>60</height>
        </rect>
@@ -263,7 +263,7 @@
         <string/>
        </property>
       </widget>
-      <widget class="QLabel" name="lblTempIcon">
+      <widget class="ClickableLabel" name="lblTempIcon">
        <property name="geometry">
         <rect>
          <x>71</x>
@@ -326,7 +326,7 @@
         </font>
        </property>
        <property name="text">
-        <string>30 °C</string>
+        <string>--.-- °C</string>
        </property>
       </widget>
       <zorder>btnTemperature</zorder>
@@ -486,7 +486,7 @@
         </font>
        </property>
        <property name="text">
-        <string>30 %</string>
+        <string>--.-- %</string>
        </property>
       </widget>
       <zorder>btnHumidity</zorder>
@@ -646,7 +646,7 @@
         </font>
        </property>
        <property name="text">
-        <string>30 PPM</string>
+        <string>---- PPM</string>
        </property>
       </widget>
       <zorder>btnCo2</zorder>
@@ -825,7 +825,7 @@
         </font>
        </property>
        <property name="text">
-        <string>30 %</string>
+        <string>--.-- %</string>
        </property>
       </widget>
       <zorder>btnOxygen</zorder>
@@ -843,8 +843,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>6</x>
-        <y>140</y>
+        <x>5</x>
+        <y>66</y>
         <width>60</width>
         <height>60</height>
        </rect>
@@ -877,8 +877,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>6</x>
-        <y>210</y>
+        <x>5</x>
+        <y>136</y>
         <width>60</width>
         <height>60</height>
        </rect>
@@ -911,8 +911,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>6</x>
-        <y>280</y>
+        <x>5</x>
+        <y>206</y>
         <width>60</width>
         <height>60</height>
        </rect>
@@ -945,8 +945,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>6</x>
-        <y>70</y>
+        <x>5</x>
+        <y>346</y>
         <width>60</width>
         <height>60</height>
        </rect>
@@ -1307,10 +1307,10 @@
      <widget class="QPushButton" name="btnTemperature_2">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>65</y>
-        <width>781</width>
-        <height>371</height>
+        <x>0</x>
+        <y>50</y>
+        <width>801</width>
+        <height>391</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1324,8 +1324,8 @@ border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
+        <x>0</x>
+        <y>0</y>
         <width>801</width>
         <height>51</height>
        </rect>
@@ -1364,8 +1364,8 @@ border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
       </property>
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
+        <x>-3</x>
+        <y>2</y>
         <width>121</width>
         <height>51</height>
        </rect>
@@ -1474,27 +1474,6 @@ border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
        <string/>
       </property>
      </widget>
-     <widget class="ClickableLabel" name="lblLowerBound_6">
-      <property name="geometry">
-       <rect>
-        <x>670</x>
-        <y>20</y>
-        <width>91</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>30 *C</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
      <widget class="QLabel" name="lblTemp_4">
       <property name="geometry">
        <rect>
@@ -1514,9 +1493,9 @@ border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>0</x>
         <y>441</y>
-        <width>801</width>
+        <width>811</width>
         <height>51</height>
        </rect>
       </property>
@@ -1530,7 +1509,7 @@ border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
        <string/>
       </property>
      </widget>
-     <widget class="QGraphicsView" name="gView">
+     <widget class="QChartView" name="gView">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -1621,39 +1600,11 @@ border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="ClickableLabel" name="lblTempCtl_2">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>640</x>
-        <y>20</y>
-        <width>31</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-        <horstretch>100</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/temp.png);background-color: rgb(255, 150, 0)</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="ClickableLabel" name="lblBack">
       <property name="geometry">
        <rect>
-        <x>25</x>
-        <y>19</y>
+        <x>12</x>
+        <y>11</y>
         <width>91</width>
         <height>31</height>
        </rect>
@@ -1680,14 +1631,12 @@ border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
      <zorder>lblTemp_3</zorder>
      <zorder>btnLowerBound_4</zorder>
      <zorder>lblRedGear_2</zorder>
-     <zorder>lblLowerBound_6</zorder>
      <zorder>lblTemp_4</zorder>
      <zorder>label_4</zorder>
      <zorder>gView</zorder>
      <zorder>lblLowerBound_4</zorder>
      <zorder>lblLowerBound_2</zorder>
      <zorder>lblLowerBound_3</zorder>
-     <zorder>lblTempCtl_2</zorder>
      <zorder>lblBack</zorder>
      <zorder>lblLowerBound_5</zorder>
     </widget>
@@ -1698,7 +1647,12 @@ border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
   <customwidget>
    <class>ClickableLabel</class>
    <extends>QLabel</extends>
-   <header location="global">clickablelabel.h</header>
+   <header>clickablelabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QGraphicsView</extends>
+   <header location="global">QtCharts</header>
   </customwidget>
  </customwidgets>
  <resources/>
