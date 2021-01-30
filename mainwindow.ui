@@ -125,7 +125,7 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">image: url(:/bluelamp.png);</string>
+       <string notr="true">image: url(:/offlamp.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -476,7 +476,7 @@
         <rect>
          <x>180</x>
          <y>60</y>
-         <width>121</width>
+         <width>161</width>
          <height>41</height>
         </rect>
        </property>
@@ -865,7 +865,7 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">image: url(:/greenfan.png);</string>
+       <string notr="true">image: url(:/offgreenfan.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -899,7 +899,7 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">image: url(:/greenice.png);</string>
+       <string notr="true">image: url(:/offgreenice.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -933,7 +933,7 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">image: url(:/neopixel.png);</string>
+       <string notr="true">image: url(:/offneopixel.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -967,7 +967,7 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">image: url(:/plug.png);</string>
+       <string notr="true">image: url(:/offplug.png);</string>
       </property>
       <property name="text">
        <string/>

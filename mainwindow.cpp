@@ -88,7 +88,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_serialPort.setStopBits(QSerialPort::OneStop);
 
 
-    m_serialPort.setPortName("/dev/ttyUSB0");
+    m_serialPort.setPortName("/dev/ttyACM0");
     m_serialPort.setBaudRate(115200);
 
 
