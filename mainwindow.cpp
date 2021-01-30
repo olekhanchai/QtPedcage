@@ -217,6 +217,7 @@ void MainWindow::on_btnPlug_clicked()
 void MainWindow::on_btnCamOn_clicked()
 {
     ui->lblOpenCam->setStyleSheet(mapOpenCam[ui->lblOpenCam->isClicked()]);
+    sendCommand("P20");
 }
 
 void MainWindow::on_btnRedDown_clicked()
