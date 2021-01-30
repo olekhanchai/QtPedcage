@@ -156,9 +156,9 @@ void MainWindow::HumidityVisibleGroup(bool visible)
 
 void MainWindow::togglePin(int pin, bool condition)
 {
-    QString cmd = "P10 R" + QString(pin) + " S1";
+    QString cmd = QString("P10 R%1 S1").arg(pin);
     if (!condition) {
-        cmd = "P10 R" + QString(pin) + " S0";
+        cmd = QString("P10 R%1 S0").arg(pin);
     }
     sendCommand(cmd);
 }
