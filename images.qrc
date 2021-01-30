@@ -40,5 +40,16 @@
         <file>status.png</file>
         <file>humidity.jpg</file>
         <file>oxigen.jpg</file>
+        <file>fan-xxl.png</file>
+        <file>greenfan.png</file>
+        <file>greenice.png</file>
+        <file>neopixel.png</file>
+        <file>plug.png</file>
+        <file>bluebarcut.png</file>
+        <file>bluebarcutlong.png</file>
+        <file>offneopixel.png</file>
+        <file>offgreenice.png</file>
+        <file>offgreenfan.png</file>
+        <file>offplug.png</file>
     </qresource>
 </RCC>

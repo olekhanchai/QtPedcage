@@ -36,19 +36,21 @@ MainWindow::MainWindow(QWidget *parent)
     O2VisibleGroup(false);
     HumidityVisibleGroup(false);
 
-    QTimer::connect(ui->lblStart, SIGNAL(clicked()), this, SLOT(on_btnStart_clicked()));
     QTimer::connect(ui->lblOpenCam, SIGNAL(clicked()), this, SLOT(on_btnCamOn_clicked()));
     QTimer::connect(ui->lblBlueLight, SIGNAL(clicked()), this, SLOT(on_btnBlueLamp_clicked()));
-    QTimer::connect(ui->lblYellowLight, SIGNAL(clicked()), this, SLOT(on_btnYellowLamp_clicked()));
+    QTimer::connect(ui->lblNeoPixel, SIGNAL(clicked()),this, SLOT(on_btnNeoPixel_clicked()));
+    QTimer::connect(ui->lblPeltierCooler, SIGNAL(clicked()),this, SLOT(on_btnPeltierCooler_clicked()));
+    QTimer::connect(ui->lblSystemFan, SIGNAL(clicked()), this, SLOT(on_btnSystemFan_clicked()));
+    QTimer::connect(ui->lblPlug, SIGNAL(clicked()), this, SLOT(on_btnPlug_clicked()));
 
-    QTimer::connect(ui->lblUpperBound, SIGNAL(clicked()), this, SLOT(on_btnUpperBound_clicked()));
-    QTimer::connect(ui->lblMiddleBound, SIGNAL(clicked()), this, SLOT(on_btnMiddleBound_clicked()));
-    QTimer::connect(ui->lblLowerBound, SIGNAL(clicked()), this, SLOT(on_btnLowerBound_clicked()));
+//    QTimer::connect(ui->lblUpperBound, SIGNAL(clicked()), this, SLOT(on_btnUpperBound_clicked()));
+//    QTimer::connect(ui->lblMiddleBound, SIGNAL(clicked()), this, SLOT(on_btnMiddleBound_clicked()));
+//    QTimer::connect(ui->lblLowerBound, SIGNAL(clicked()), this, SLOT(on_btnLowerBound_clicked()));
 
-    QTimer::connect(ui->lblBack, SIGNAL(clicked()), this, SLOT(on_btnBack_clicked()));
+//    QTimer::connect(ui->lblBack, SIGNAL(clicked()), this, SLOT(on_btnBack_clicked()));
 
     // Control temp
-    QTimer::connect(ui->lblTempCtl, SIGNAL(clicked()), this, SLOT(on_btnRedCtl_clicked()));
+    //QTimer::connect(ui->lblTempCtl, SIGNAL(clicked()), this, SLOT(on_btnRedCtl_clicked()));
     //QTimer::connect(ui->lblTempCtlDown, SIGNAL(released()), this, SLOT(on_btnRedDownCtl_released()));
     //QTimer::connect(ui->lblTempCtlUp, SIGNAL(clicked()), this, SLOT(on_btnRedUpCtl_clicked()));
     //QTimer::connect(ui->lblTempCtlUp, SIGNAL(released()), this, SLOT(on_btnRedUpCtl_released()));
@@ -60,24 +62,24 @@ MainWindow::MainWindow(QWidget *parent)
     //QTimer::connect(ui->lblO2CtlUp, SIGNAL(released()), this, SLOT(on_btnGreenUpCtl_released()));
 
     //Decrease value
-    QTimer::connect(ui->lblRedDown, SIGNAL(clicked()), this, SLOT(on_btnRedDown_clicked()));
-    QTimer::connect(ui->lblRedDown, SIGNAL(released()), this, SLOT(on_btnRedDown_released()));
-    QTimer::connect(ui->lblBlueDown, SIGNAL(clicked()), this, SLOT(on_btnBlueDown_clicked()));
-    QTimer::connect(ui->lblBlueDown, SIGNAL(released()), this, SLOT(on_btnBlueDown_released()));
-    QTimer::connect(ui->lblGreyDown, SIGNAL(clicked()), this, SLOT(on_btnGreyDown_clicked()));
-    QTimer::connect(ui->lblGreyDown, SIGNAL(released()), this, SLOT(on_btnGreyDown_released()));
-    QTimer::connect(ui->lblGreenDown, SIGNAL(clicked()), this, SLOT(on_btnGreenDown_clicked()));
-    QTimer::connect(ui->lblGreenDown, SIGNAL(released()), this, SLOT(on_btnGreenDown_released()));
+//    QTimer::connect(ui->lblRedDown, SIGNAL(clicked()), this, SLOT(on_btnRedDown_clicked()));
+//    QTimer::connect(ui->lblRedDown, SIGNAL(released()), this, SLOT(on_btnRedDown_released()));
+//    QTimer::connect(ui->lblBlueDown, SIGNAL(clicked()), this, SLOT(on_btnBlueDown_clicked()));
+//    QTimer::connect(ui->lblBlueDown, SIGNAL(released()), this, SLOT(on_btnBlueDown_released()));
+//    QTimer::connect(ui->lblGreyDown, SIGNAL(clicked()), this, SLOT(on_btnGreyDown_clicked()));
+//    QTimer::connect(ui->lblGreyDown, SIGNAL(released()), this, SLOT(on_btnGreyDown_released()));
+//    QTimer::connect(ui->lblGreenDown, SIGNAL(clicked()), this, SLOT(on_btnGreenDown_clicked()));
+//    QTimer::connect(ui->lblGreenDown, SIGNAL(released()), this, SLOT(on_btnGreenDown_released()));
 
-    //Increase value
-    QTimer::connect(ui->lblRedUp, SIGNAL(clicked()), this,   SLOT(on_btnRedUp_clicked()));
-    QTimer::connect(ui->lblRedUp, SIGNAL(released()), this,  SLOT(on_btnRedUp_released()));
-    QTimer::connect(ui->lblBlueUp, SIGNAL(clicked()), this,  SLOT(on_btnBlueUp_clicked()));
-    QTimer::connect(ui->lblBlueUp, SIGNAL(released()), this, SLOT(on_btnBlueUp_released()));
-    QTimer::connect(ui->lblGreyUp, SIGNAL(clicked()), this,  SLOT(on_btnGreyUp_clicked()));
-    QTimer::connect(ui->lblGreyUp, SIGNAL(released()), this, SLOT(on_btnGreyUp_released()));
-    QTimer::connect(ui->lblGreenUp, SIGNAL(clicked()), this, SLOT(on_btnGreenUp_clicked()));
-    QTimer::connect(ui->lblGreenUp, SIGNAL(released()), this,SLOT(on_btnGreenUp_released()));
+//    //Increase value
+//    QTimer::connect(ui->lblRedUp, SIGNAL(clicked()), this,   SLOT(on_btnRedUp_clicked()));
+//    QTimer::connect(ui->lblRedUp, SIGNAL(released()), this,  SLOT(on_btnRedUp_released()));
+//    QTimer::connect(ui->lblBlueUp, SIGNAL(clicked()), this,  SLOT(on_btnBlueUp_clicked()));
+//    QTimer::connect(ui->lblBlueUp, SIGNAL(released()), this, SLOT(on_btnBlueUp_released()));
+//    QTimer::connect(ui->lblGreyUp, SIGNAL(clicked()), this,  SLOT(on_btnGreyUp_clicked()));
+//    QTimer::connect(ui->lblGreyUp, SIGNAL(released()), this, SLOT(on_btnGreyUp_released()));
+//    QTimer::connect(ui->lblGreenUp, SIGNAL(clicked()), this, SLOT(on_btnGreenUp_clicked()));
+//    QTimer::connect(ui->lblGreenUp, SIGNAL(released()), this,SLOT(on_btnGreenUp_released()));
 
 
     // Setup serial port
@@ -100,11 +102,11 @@ MainWindow::MainWindow(QWidget *parent)
     m_timerStateQuery.start(2000);
 
     //Start pet live time
-    ui->btnLowerBound->setVisible(true);
-    ui->lblLowerBound->setVisible(true);
-    ui->lblLowerBound->setText("Start Treat");
-    ui->lblStartDateTime->setStyleSheet("background-color: rgb(50, 50, 200);");
-    ui->lblStartDateTime->setText("<html><head/><body><p><span style=\" color:#ffffff;\">Start Date/time</span></p></body></html>");
+//    ui->btnLowerBound->setVisible(true);
+//    ui->lblLowerBound->setVisible(true);
+//    ui->lblLowerBound->setText("Start Treat");
+    //ui->lblStartDateTime->setStyleSheet("background-color: rgb(50, 50, 200);");
+    //ui->lblStartDateTime->setText("<html><head/><body><p><span style=\" color:#ffffff;\">Start Date/time</span></p></body></html>");
     m_statusReceived = true;
 }
 
@@ -116,35 +118,35 @@ MainWindow::~MainWindow()
 
 void MainWindow::SetupVisibleGroup(bool visible)
 {
-        ui->lblUpperBound->setVisible(visible);
-        ui->lblLowerBound->setVisible(visible);
-        ui->lblMiddleBound->setVisible(visible);
-        ui->btnMiddleBound->setVisible(false);
-        ui->btnUpperBound->setVisible(false);
-        ui->btnLowerBound->setVisible(visible);
+//        ui->lblUpperBound->setVisible(visible);
+//        ui->lblLowerBound->setVisible(visible);
+//        ui->lblMiddleBound->setVisible(visible);
+//        ui->btnMiddleBound->setVisible(false);
+//        ui->btnUpperBound->setVisible(false);
+//        ui->btnLowerBound->setVisible(visible);
 
-        ui->lblGreyGear->setVisible(false);
-        ui->lblGreenGear->setVisible(false);
-        ui->lblBlueGear->setVisible(false);
-        ui->lblRedGear->setVisible(false);
+//        //ui->lblGreyGear->setVisible(false);
+//        ui->lblGreenGear->setVisible(false);
+//        ui->lblBlueGear->setVisible(false);
+//        ui->lblRedGear->setVisible(false);
 }
 
 void MainWindow::ToggleVisibleGroup(int button)
 {
 
-        ui->lblGreyGear->setVisible(true);
-        ui->lblGreenGear->setVisible(true);
-        ui->lblBlueGear->setVisible(true);
-        ui->lblRedGear->setVisible(true);
+//        ui->lblGreyGear->setVisible(true);
+//        ui->lblGreenGear->setVisible(true);
+//        ui->lblBlueGear->setVisible(true);
+//        ui->lblRedGear->setVisible(true);
 
-        ui->lblUpperBound->setVisible(true);
-        ui->lblMiddleBound->setVisible(true);
-        ui->lblLowerBound->setVisible(true);
+        //ui->lblUpperBound->setVisible(true);
+        //ui->lblMiddleBound->setVisible(true);
+        //ui->lblLowerBound->setVisible(true);
         switch (button) {
             case 1: {
-                ui->btnLowerBound->setVisible(true);
-                ui->btnMiddleBound->setVisible(false);
-                ui->btnUpperBound->setVisible(false);
+                //ui->btnLowerBound->setVisible(true);
+                //ui->btnMiddleBound->setVisible(false);
+                //ui->btnUpperBound->setVisible(false);
                 tempMode = 0;
                 humidityMode = 0;
                 co2Mode = 0;
@@ -152,9 +154,9 @@ void MainWindow::ToggleVisibleGroup(int button)
                 updateDisplay("lower");
             };break;
             case 2: {
-                ui->btnLowerBound->setVisible(false);
-                ui->btnMiddleBound->setVisible(true);
-                ui->btnUpperBound->setVisible(false);
+                //ui->btnLowerBound->setVisible(false);
+               // ui->btnMiddleBound->setVisible(true);
+                //ui->btnUpperBound->setVisible(false);
                 tempMode = 1;
                 humidityMode = 1;
                 co2Mode = 1;
@@ -162,9 +164,9 @@ void MainWindow::ToggleVisibleGroup(int button)
                 updateDisplay();
             };break;
             case 3: {
-                ui->btnLowerBound->setVisible(false);
-                ui->btnMiddleBound->setVisible(false);
-                ui->btnUpperBound->setVisible(true);
+                //ui->btnLowerBound->setVisible(false);
+                //ui->btnMiddleBound->setVisible(false);
+                //ui->btnUpperBound->setVisible(true);
                 tempMode = 2;
                 humidityMode = 2;
                 co2Mode = 2;
@@ -180,22 +182,23 @@ void MainWindow::updateDisplay(QString group)
         ui->lblTempDisp->setText(QString::number(tempUpperVal) + QString::fromUtf8(" °C"));
         ui->lblHumidityDisp->setText(QString::number(humidityUpperVal) + " %RH");
         ui->lblCo2Disp->setText(QString::number(co2UpperVal) + " PPM");
-        ui->lblO2Disp->setText(QString::number(oxygenUpperVal) + " %");
+        //ui->lblO2Disp->setText(QString::number(oxygenUpperVal) + " %");
     } else if (group.toUpper() == "LOWER") {
         ui->lblTempDisp->setText(QString::number(tempLowerVal) + QString::fromUtf8(" °C"));
         ui->lblHumidityDisp->setText(QString::number(humidityLowerVal) + " %RH");
         ui->lblCo2Disp->setText(QString::number(co2LowerVal) + " PPM");
-        ui->lblO2Disp->setText(QString::number(oxygenLowerVal) + " %");
+        //ui->lblO2Disp->setText(QString::number(oxygenLowerVal) + " %");
     } else {
         ui->lblTempDisp->setText(QString::number(tempVal) + QString::fromUtf8(" °C"));
         ui->lblHumidityDisp->setText(QString::number(humidityVal) + " %RH");
         ui->lblCo2Disp->setText(QString::number(co2Val) + " PPM");
-        ui->lblO2Disp->setText(QString::number(oxygenVal) + " %");
+        //ui->lblO2Disp->setText(QString::number(oxygenVal) + " %");
     }
 }
 
 void MainWindow::CO2VisibleGroup(bool visible)
 {
+    ui->lblGreyGear->setVisible(visible);
     ui->lblGreyUp->setVisible(visible);
     ui->lblGreyDown->setVisible(visible);
 }
@@ -219,89 +222,6 @@ void MainWindow::HumidityVisibleGroup(bool visible)
     ui->lblBlueGear->setVisible(visible);
     ui->lblBlueUp->setVisible(visible);
     ui->lblBlueDown->setVisible(visible);
-}
-
-void MainWindow::on_btnStart_clicked()
-{
-    ui->lblStart->setStyleSheet(mapStart[ui->lblStart->isClicked()]);
-    SetupVisibleGroup(!ui->lblStart->isClicked());
-    CO2VisibleGroup(!ui->lblStart->isClicked());
-    TempVisibleGroup(!ui->lblStart->isClicked());
-    O2VisibleGroup(!ui->lblStart->isClicked());
-    HumidityVisibleGroup(!ui->lblStart->isClicked());
-    ui->lblStatus->setText(mapStartText[ui->lblStart->isClicked()]);
-    QString path = "configuration.ini";
-    if (ui->lblStart->isClicked()) {
-        ToggleVisibleGroup(2);
-        SetupVisibleGroup(false);
-        QSettings *settings = new QSettings(path, QSettings::IniFormat);
-
-        qDebug() << "is this write?" << settings->isWritable();
-
-        settings->beginGroup("LowerBounds");
-        settings->setValue("temp", tempLowerVal);
-        settings->setValue("humidity", humidityLowerVal);
-        settings->setValue("O2", oxygenLowerVal);
-        settings->setValue("CO2", co2LowerVal);
-        settings->endGroup();
-
-        settings->beginGroup("DefaultValue");
-        settings->setValue("temp", tempVal);
-        settings->setValue("humidity", humidityVal);
-        settings->setValue("O2", oxygenVal);
-        settings->setValue("CO2", co2Val);
-        settings->endGroup();
-
-        settings->beginGroup("UpperBounds");
-        settings->setValue("temp", tempUpperVal);
-        settings->setValue("humidity", humidityUpperVal);
-        settings->setValue("O2", oxygenUpperVal);
-        settings->setValue("CO2", co2UpperVal);
-        settings->endGroup();
-
-        settings->beginGroup("SettingsValue");
-        settings->setValue("bluelamp", ui->lblBlueLight->isClicked());
-        settings->setValue("yellowlamp", ui->lblYellowLight->isClicked());
-        settings->setValue("start_date", QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss"));
-        settings->setValue("sensor_date", QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss"));
-        settings->endGroup();
-
-    } else {
-        ToggleVisibleGroup(1);
-
-        QSettings *settings = new QSettings(path, QSettings::IniFormat);
-
-        settings->beginGroup("LowerBounds");
-        settings->value("temp", 20);
-        settings->value("humidity", 20);
-        settings->value("O2", 10);
-        settings->value("CO2", 100);
-        settings->endGroup();
-
-        settings->beginGroup("DefaultValue");
-        settings->value("temp", 25);
-        settings->value("humidity", 60);
-        settings->value("O2", 30);
-        settings->value("CO2", 440);
-        settings->endGroup();
-
-        settings->beginGroup("UpperBounds");
-        settings->value("temp", 40);
-        settings->value("humidity", 80);
-        settings->value("O2", 80);
-        settings->value("CO2", 990);
-        settings->endGroup();
-
-        settings->beginGroup("SettingsValue");
-        settings->value("bluelamp", false);
-        settings->value("yellolamp", false);
-        settings->value("start_date", QDate::currentDate());
-        settings->value("sensor_date", QDate::currentDate());
-        settings->endGroup();
-
-    }
-    sendCommand("P60 R255 G255 B255 N16\r\n");
-//    digitalWrite(0, !digitalRead(0));
 }
 
 void MainWindow::togglePin(int pin, bool condition)
@@ -330,14 +250,38 @@ void MainWindow::on_btnLowerBound_clicked()
 
 void MainWindow::on_btnYellowLamp_clicked()
 {
-     ui->lblYellowLight->setStyleSheet(mapYellowLight[ui->lblYellowLight->isClicked()]);
-    togglePin(0, ui->lblYellowLight->isClicked());
+    //ui->lblYellowLight->setStyleSheet(mapYellowLight[ui->lblYellowLight->isClicked()]);
+    //togglePin(0, ui->lblYellowLight->isClicked());
 }
 
 void MainWindow::on_btnBlueLamp_clicked()
 {
     ui->lblBlueLight->setStyleSheet(mapBlueLight[ui->lblBlueLight->isClicked()]);
     togglePin(1, ui->lblBlueLight->isClicked());
+}
+
+void MainWindow::on_btnNeoPixel_clicked()
+{
+    ui->lblNeoPixel->setStyleSheet(mapNeoPixel[ui->lblNeoPixel->isClicked()]);
+    togglePin(1, ui->lblNeoPixel->isClicked());
+}
+
+void MainWindow::on_btnPeltierCooler_clicked()
+{
+    ui->lblPeltierCooler->setStyleSheet(mapPeltier[ui->lblPeltierCooler->isClicked()]);
+    togglePin(1, ui->lblPeltierCooler->isClicked());
+}
+
+void MainWindow::on_btnSystemFan_clicked()
+{
+    ui->lblSystemFan->setStyleSheet(mapSystemFan[ui->lblSystemFan->isClicked()]);
+    togglePin(1, ui->lblSystemFan->isClicked());
+}
+
+void MainWindow::on_btnPlug_clicked()
+{
+    ui->lblPlug->setStyleSheet(mapPlug[ui->lblPlug->isClicked()]);
+    togglePin(1, ui->lblPlug->isClicked());
 }
 
 void MainWindow::on_btnCamOn_clicked()
@@ -435,7 +379,7 @@ void MainWindow::on_btnBlueDown_released()
 
 void MainWindow::on_btnGreyDown_clicked()
 {
-    ui->lblGreyDown->setStyleSheet(mapPush[btnColor::grey]);
+    //ui->lblGreyDown->setStyleSheet(mapPush[btnColor::grey]);
     switch (co2Mode) {
         case 0: {
             ui->lblCo2Disp->setText(QString::number(--co2LowerVal) + " PPM");
@@ -451,7 +395,7 @@ void MainWindow::on_btnGreyDown_clicked()
 
 void MainWindow::on_btnGreyDown_released()
 {
-    ui->lblGreyDown->setStyleSheet(mapRelease[btnColor::grey]);
+    //ui->lblGreyDown->setStyleSheet(mapRelease[btnColor::grey]);
 }
 
 void MainWindow::on_btnGreenDown_clicked()
@@ -459,13 +403,13 @@ void MainWindow::on_btnGreenDown_clicked()
     ui->lblGreenDown->setStyleSheet(mapPush[btnColor::green]);
     switch (oxygenMode) {
         case 0: {
-            ui->lblO2Disp->setText(QString::number(--oxygenLowerVal) + " %");
+            //ui->lblO2Disp->setText(QString::number(--oxygenLowerVal) + " %");
         };break;
         case 1: {
-            ui->lblO2Disp->setText(QString::number(--oxygenVal) + " %");
+            //ui->lblO2Disp->setText(QString::number(--oxygenVal) + " %");
         };break;
         case 2: {
-            ui->lblO2Disp->setText(QString::number(--oxygenUpperVal) + " %");
+            //ui->lblO2Disp->setText(QString::number(--oxygenUpperVal) + " %");
         }break;
     }
 }
@@ -520,7 +464,7 @@ void MainWindow::on_btnBlueUp_released()
 
 void MainWindow::on_btnGreyUp_clicked()
 {
-    ui->lblGreyUp->setStyleSheet(mapPushUp[btnColor::grey]);
+    //ui->lblGreyUp->setStyleSheet(mapPushUp[btnColor::grey]);
     switch (co2Mode) {
         case 0: {
             ui->lblCo2Disp->setText(QString::number(++co2LowerVal) + " PPM");
@@ -536,7 +480,7 @@ void MainWindow::on_btnGreyUp_clicked()
 
 void MainWindow::on_btnGreyUp_released()
 {
-    ui->lblGreyUp->setStyleSheet(mapReleaseUp[btnColor::grey]);
+    //ui->lblGreyUp->setStyleSheet(mapReleaseUp[btnColor::grey]);
 }
 
 void MainWindow::on_btnGreenUp_clicked()
@@ -544,13 +488,13 @@ void MainWindow::on_btnGreenUp_clicked()
     ui->lblGreenUp->setStyleSheet(mapPushUp[btnColor::green]);
     switch (oxygenMode) {
         case 0: {
-            ui->lblO2Disp->setText(QString::number(++oxygenLowerVal) + " %");
+            //ui->lblO2Disp->setText(QString::number(++oxygenLowerVal) + " %");
         };break;
         case 1: {
-            ui->lblO2Disp->setText(QString::number(++oxygenVal) + " %");
+            //ui->lblO2Disp->setText(QString::number(++oxygenVal) + " %");
         };break;
         case 2: {
-            ui->lblO2Disp->setText(QString::number(++oxygenUpperVal) + " %");
+            //ui->lblO2Disp->setText(QString::number(++oxygenUpperVal) + " %");
         }break;
     }
 

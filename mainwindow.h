@@ -43,8 +43,11 @@ private slots:
     void onTimerConnection();
     void onTimerStateQuery();
 
-    void on_btnStart_clicked();
     void on_btnYellowLamp_clicked();
+    void on_btnNeoPixel_clicked();
+    void on_btnPeltierCooler_clicked();
+    void on_btnSystemFan_clicked();
+    void on_btnPlug_clicked();
     void on_btnBlueLamp_clicked();
     void on_btnCamOn_clicked();
 
@@ -148,6 +151,10 @@ private:
     QMap<btnColor, QString> mapPushUp = {{red, "image: url(:/reduppush.png);"},{blue,"image: url(:/blueuppush.png);"},{grey,"image: url(:/greyuppush.png);"},{green, "image: url(:/greenuppush.png);"}};
     QMap<btnColor, QString> mapReleaseUp = {{red, "image: url(:/redup.png);"},{blue,"image: url(:/blueup.png);"},{grey,"image: url(:/greyup.png);"},{green, "image: url(:/greenup.png);"}};
     QMap<bool, QString> mapBlueLight = {{true, "image: url(:/bluelamp.png);"}, {false, "image: url(:/offlamp.png);"}};
+    QMap<bool, QString> mapNeoPixel = {{true, "image: url(:/neopixel.png);"}, {false, "image: url(:/offneopixel.png);"}};
+    QMap<bool, QString> mapPeltier = {{true, "image: url(:/greenice.png);"}, {false, "image: url(:/offgreenice.png);"}};
+    QMap<bool, QString> mapSystemFan = {{true, "image: url(:/greenfan.png);"}, {false, "image: url(:/offgreenfan.png);"}};
+    QMap<bool, QString> mapPlug = {{true, "image: url(:/plug.png);"}, {false, "image: url(:/offplug.png);"}};
     QMap<bool, QString> mapYellowLight = {{true, "image: url(:/yellolamp.png);"}, {false, "image: url(:/offlamp.png);"}};
     QMap<bool, QString> mapOpenCam = {{true, "image: url(:/camera.png);"},{false, "image: url(:/offcam.png);"}};
     QMap<bool, QString> mapStart = {{true, "image: url(:/green.png);"},{false, "image: url(:/gear.png);"}};
