@@ -7,6 +7,7 @@
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 #include <QTime>
+#include <QSqlDatabase>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -158,5 +159,12 @@ private:
     QString strTemp = "";
     QString strCO2 = "";
     int fd;
+
+    QSqlDatabase m_db;
+
+    bool saveOxygenValues();
+    bool saveCarbondioxideValues();
+    bool saveTemperatureValues();
+    bool saveHumidityValues();
 };
 #endif // MAINWINDOW_H

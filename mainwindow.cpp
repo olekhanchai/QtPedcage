@@ -12,6 +12,8 @@
 #include <qfile.h>
 #include <qlineseries.h>
 #include <QtCharts>
+#include <QSqlQuery>
+#include <QSqlError>
 
 //int MainWindow::fd = 0;
 const int BUFFERLENGTH = 127;
@@ -103,6 +105,24 @@ MainWindow::MainWindow(QWidget *parent)
     m_timerStateQuery.start(2000);
     m_timerLogData.start(60000);
     m_statusReceived = true;
+
+    m_db = QSqlDatabase::addDatabase("QSQLITE");
+    m_db.setDatabaseName("allsensors.db");
+
+    if (!m_db.open())
+    {
+       qDebug() << "Error: connection with database failed";
+    }
+    else
+    {
+       qDebug() << "Database: connection ok";
+    }
+
+    QSqlQuery query;
+    query.exec("CREATE TABLE IF NOT EXISTS oxygen(sensor_time datetime primary key, data float);");
+    query.exec("CREATE TABLE IF NOT EXISTS carbondioxide(sensor_time datetime primary key, data float);");
+    query.exec("CREATE TABLE IF NOT EXISTS temperature(sensor_time datetime primary key, data float);");
+    query.exec("CREATE TABLE IF NOT EXISTS humidity(sensor_time datetime primary key, data float);");
 }
 
 MainWindow::~MainWindow()
@@ -111,6 +131,89 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+bool MainWindow::saveOxygenValues()
+{
+   bool success = false;
+   // you should check if args are ok first...
+   QSqlQuery query;
+
+   query.prepare("INSERT INTO oxygen values(datetime('now', 'localtime'), :o2)");
+   query.bindValue(":o2", oxygenVal);
+   if(query.exec())
+   {
+       qDebug() << "add oxygen value ok";
+       success = true;
+   }
+   else
+   {
+        qDebug() << "add oxygen value error:"
+                 << query.lastError();
+   }
+   return success;
+}
+
+bool MainWindow::saveCarbondioxideValues()
+{
+   bool success = false;
+   // you should check if args are ok first...
+   QSqlQuery query;
+
+   query.prepare("INSERT INTO carbondioxide values(datetime('now', 'localtime'), :co2)");
+   query.bindValue(":co2", co2Val);
+   if(query.exec())
+   {
+       qDebug() << "add carbondioxide value ok";
+       success = true;
+   }
+   else
+   {
+        qDebug() << "add carbondioxide value error:"
+                 << query.lastError();
+   }
+   return success;
+}
+
+bool MainWindow::saveTemperatureValues()
+{
+   bool success = false;
+   // you should check if args are ok first...
+   QSqlQuery query;
+
+   query.prepare("INSERT INTO temperature values(datetime('now', 'localtime'), :temp)");
+   query.bindValue(":temp", tempVal);
+   if(query.exec())
+   {
+       qDebug() << "add temperature value ok";
+       success = true;
+   }
+   else
+   {
+        qDebug() << "add temperature value error:"
+                 << query.lastError();
+   }
+   return success;
+}
+
+bool MainWindow::saveHumidityValues()
+{
+   bool success = false;
+   // you should check if args are ok first...
+   QSqlQuery query;
+
+   query.prepare("INSERT INTO humidity values(datetime('now', 'localtime'), :humid)");
+   query.bindValue(":humid", humidityVal);
+   if(query.exec())
+   {
+       qDebug() << "add humidity value ok";
+       success = true;
+   }
+   else
+   {
+        qDebug() << "add humidity value error:"
+                 << query.lastError();
+   }
+   return success;
+}
 
 void MainWindow::updateDisplay(QString group)
 {
@@ -554,14 +657,10 @@ void MainWindow::onTimerStateQuery()
 
 void MainWindow::onTimerLogData()
 {
-    QString filename="Data.txt";
-    QFile file( filename );
-    if ( file.open(QIODevice::Append) )
-    {
-        QTextStream stream( &file );
-        stream << "T:" << tempVal << ",H:" << humidityVal << ",C:" << co2Val << ",O:" << oxygenVal << endl;
-    }
-    file.close();
+    saveOxygenValues();
+    saveCarbondioxideValues();
+    saveTemperatureValues();
+    saveHumidityValues();
 }
 
 void MainWindow::openPort()
