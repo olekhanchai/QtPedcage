@@ -8,6 +8,7 @@
 #include <QtSerialPort/QSerialPortInfo>
 #include <QTime>
 #include <QSqlDatabase>
+#include "cameraworker.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,6 +35,10 @@ public:
         int tableIndex;
         bool showInConsole;
     };
+
+    bool cameraRunning;
+    QThread *workerThread;
+    CameraWorker *worker;
 
 private slots:
 
@@ -166,5 +171,7 @@ private:
     bool saveCarbondioxideValues();
     bool saveTemperatureValues();
     bool saveHumidityValues();
+    void handleImage(QImage &image);
+    void cameraFinished();
 };
 #endif // MAINWINDOW_H

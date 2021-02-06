@@ -30,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
 //    digitalWrite(0, 0);
 //    digitalWrite(1, 0);
     mTimer.start(1000);
+    cameraRunning = false;
 
     QTimer::singleShot(0, this, SLOT(showFullScreen()));
     connect(&mTimer, SIGNAL(timeout()), this, SLOT(showClock()));
@@ -323,14 +324,50 @@ void MainWindow::on_btnPlug_clicked()
 
 void MainWindow::on_btnCamOn_clicked()
 {
-    ui->lblOpenCam->setStyleSheet(mapOpenCam[ui->lblOpenCam->isClicked()]);
-    if (ui->lblOpenCam->isClicked()) {
-        sendCommand("P20 V255");
-        sendCommand("P10 R1 S0");
-    } else {
-        sendCommand("P20 V0");
-        sendCommand("P10 R1 S1");
+    // Initialize the thread and worker
+    workerThread = new QThread;
+    worker = new CameraWorker;
+
+    // Check to make sure the camera is not already running
+    // If it is, return without doing anything.
+    if (cameraRunning) {
+        return;
     }
+
+    // Setup the thread
+    worker->moveToThread(workerThread);
+
+    // Connect signals to slots
+    connect(workerThread, SIGNAL(started()), worker, SLOT(doWork()));
+    connect(worker, SIGNAL(finished()), workerThread, SLOT(quit()));
+    connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+    connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
+    connect(worker, SIGNAL(finished()), this, SLOT(cameraFinished()));
+    connect(worker, SIGNAL(handleImage(QImage &)), this, SLOT(handleImage(QImage &)));
+    connect(ui->lblHumidityIcon, SIGNAL(clicked()), worker, SLOT(stopWork()));
+    workerThread->start();
+
+    // Update the running flag
+    cameraRunning = true;
+}
+
+void MainWindow::handleImage(QImage &image)
+{
+    // Update the image shown
+    ui->lblOxigenBackground->setPixmap(QPixmap::fromImage(image));
+
+    // Force an update of the UI so that the image is shown immediately.
+    QApplication::processEvents();
+    this->repaint();
+}
+
+void MainWindow::cameraFinished()
+{
+    // Update running flag
+    cameraRunning = false;
+
+    // Reset the image label
+    ui->lblOxigenBackground->setText("Camera Disabled");
 }
 
 void MainWindow::on_btnRedDown_clicked()
