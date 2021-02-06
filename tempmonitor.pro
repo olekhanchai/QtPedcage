@@ -35,8 +35,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 #LIBS += -L/usr/local/lib -lwiringPi -lwiringPiDev
+LIBS += -L/opt/vc/lib -lmmal -lmmal_core -lmmal_util
+LIBS += -L/usr/local/lib -I/usr/local/include -lraspicam
 
 RESOURCES += \
     images.qrc
 
-DISTFILES +=
+DISTFILES += \
+    .astylerc

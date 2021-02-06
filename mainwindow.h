@@ -102,6 +102,9 @@ private slots:
     int bufferLength();
     bool dataIsEnd(QString data);
 
+    void handleImage(QImage &image);
+    void cameraFinished();
+
 private:
     Ui::MainWindow *ui;
     QSerialPort m_serialPort;
@@ -171,7 +174,6 @@ private:
     bool saveCarbondioxideValues();
     bool saveTemperatureValues();
     bool saveHumidityValues();
-    void handleImage(QImage &image);
-    void cameraFinished();
+
 };
 #endif // MAINWINDOW_H

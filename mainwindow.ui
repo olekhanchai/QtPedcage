@@ -1230,6 +1230,19 @@
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>80</y>
+        <width>731</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
      <zorder>panelBackground</zorder>
      <zorder>LeftPanel</zorder>
      <zorder>topHeader</zorder>
@@ -1256,6 +1269,7 @@
      <zorder>lblMiddleBound_5</zorder>
      <zorder>lblOpenCam</zorder>
      <zorder>lblNeoPixel</zorder>
+     <zorder>label</zorder>
     </widget>
     <widget class="QWidget" name="page2">
      <widget class="QLabel" name="lblDateTime_2">
@@ -1327,7 +1341,7 @@ border-image: url(:/temperature.png) 0 0 0 0 stretch stretch;}</string>
         <x>0</x>
         <y>0</y>
         <width>801</width>
-        <height>51</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="autoFillBackground">

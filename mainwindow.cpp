@@ -124,6 +124,7 @@ MainWindow::MainWindow(QWidget *parent)
     query.exec("CREATE TABLE IF NOT EXISTS carbondioxide(sensor_time datetime primary key, data float);");
     query.exec("CREATE TABLE IF NOT EXISTS temperature(sensor_time datetime primary key, data float);");
     query.exec("CREATE TABLE IF NOT EXISTS humidity(sensor_time datetime primary key, data float);");
+
 }
 
 MainWindow::~MainWindow()
@@ -296,34 +297,7 @@ void MainWindow::on_btnBlueLamp_clicked()
 
 void MainWindow::on_btnNeoPixel_clicked()
 {
-    ui->lblNeoPixel->setStyleSheet(mapNeoPixel[ui->lblNeoPixel->isClicked()]);
-    if (ui->lblNeoPixel->isClicked()) {
-        sendCommand("P60 R255 G255 B255");
-    } else {
-        sendCommand("P60 R0 G0 B0");
-    }
-}
 
-void MainWindow::on_btnPeltierCooler_clicked()
-{
-    ui->lblPeltierCooler->setStyleSheet(mapPeltier[ui->lblPeltierCooler->isClicked()]);
-    togglePin(mapRelay["PeltierFan"], ui->lblPeltierCooler->isClicked());
-}
-
-void MainWindow::on_btnSystemFan_clicked()
-{
-    ui->lblSystemFan->setStyleSheet(mapSystemFan[ui->lblSystemFan->isClicked()]);
-    togglePin(mapRelay["DownFan"], ui->lblSystemFan->isClicked());
-}
-
-void MainWindow::on_btnPlug_clicked()
-{
-    ui->lblPlug->setStyleSheet(mapPlug[ui->lblPlug->isClicked()]);
-    togglePin(mapRelay["Plug"], ui->lblPlug->isClicked());
-}
-
-void MainWindow::on_btnCamOn_clicked()
-{
     // Initialize the thread and worker
     workerThread = new QThread;
     worker = new CameraWorker;
@@ -347,14 +321,37 @@ void MainWindow::on_btnCamOn_clicked()
     connect(ui->lblHumidityIcon, SIGNAL(clicked()), worker, SLOT(stopWork()));
     workerThread->start();
 
-    // Update the running flag
     cameraRunning = true;
+}
+
+void MainWindow::on_btnPeltierCooler_clicked()
+{
+    ui->lblPeltierCooler->setStyleSheet(mapPeltier[ui->lblPeltierCooler->isClicked()]);
+    togglePin(mapRelay["PeltierFan"], ui->lblPeltierCooler->isClicked());
+}
+
+void MainWindow::on_btnSystemFan_clicked()
+{
+    ui->lblSystemFan->setStyleSheet(mapSystemFan[ui->lblSystemFan->isClicked()]);
+    togglePin(mapRelay["DownFan"], ui->lblSystemFan->isClicked());
+}
+
+void MainWindow::on_btnPlug_clicked()
+{
+    ui->lblPlug->setStyleSheet(mapPlug[ui->lblPlug->isClicked()]);
+    togglePin(mapRelay["Plug"], ui->lblPlug->isClicked());
+}
+
+void MainWindow::on_btnCamOn_clicked()
+{
+    // Update the running flag
+     cameraRunning = true;
 }
 
 void MainWindow::handleImage(QImage &image)
 {
     // Update the image shown
-    ui->lblOxigenBackground->setPixmap(QPixmap::fromImage(image));
+    ui->label->setPixmap(QPixmap::fromImage(image));
 
     // Force an update of the UI so that the image is shown immediately.
     QApplication::processEvents();
@@ -367,7 +364,7 @@ void MainWindow::cameraFinished()
     cameraRunning = false;
 
     // Reset the image label
-    ui->lblOxigenBackground->setText("Camera Disabled");
+    ui->label->setText("Camera Disabled");
 }
 
 void MainWindow::on_btnRedDown_clicked()
